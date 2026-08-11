@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Business Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="followupBanner" class="banner banner--warning" hidden>
+  <span id="followupBannerText"></span>
+  <button type="button" class="banner__link" data-goto="sales">Review</button>
+</div>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand__mark">●</span>
+      <span class="brand__name">Business Dashboard</span>
+    </div>
+    <nav class="nav" id="tabNav">
+      <button class="nav__item is-active" data-tab="home">Home</button>
+      <button class="nav__item" data-tab="todo">To&#8209;Do</button>
+      <button class="nav__item" data-tab="revenue">Revenue</button>
+      <button class="nav__item" data-tab="expenses">Expenses</button>
+      <button class="nav__item" data-tab="sales">Sales</button>
+      <button class="nav__item" data-tab="clients">Clients</button>
+      <button class="nav__item" data-tab="ideas">Ideas</button>
+      <button class="nav__item" data-tab="links">Key Links</button>
+    </nav>
+    <div class="sidebar__footer">
+      <button type="button" class="btn btn--ghost btn--small" id="themeToggle" title="Toggle theme">Theme</button>
+      <button type="button" class="btn btn--ghost btn--small" id="dataBtn" title="Backup / restore data">Data</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- HOME -->
+    <section class="tab is-active" id="tab-home" data-tab-panel="home">
+      <header class="pageHead">
+        <h1>Overview</h1>
+        <p class="pageHead__sub" id="todayLabel"></p>
+      </header>
+
+      <div class="grid grid--stats" id="homeStats"></div>
+
+      <div class="grid grid--two">
+        <div class="card">
+          <div class="card__head">
+            <h2>Revenue this month</h2>
+          </div>
+          <div id="homeRevenueMeter"></div>
+        </div>
+        <div class="card">
+          <div class="card__head">
+            <h2>Expenses this month</h2>
+          </div>
+          <div id="homeExpenseMeter"></div>
+        </div>
+      </div>
+
+      <div class="grid grid--two">
+        <div class="card">
+          <div class="card__head">
+            <h2>Today's focus</h2>
+            <span class="card__hint">Open items, recurring first</span>
+          </div>
+          <div id="homeTodoList" class="list"></div>
+        </div>
+        <div class="card">
+          <div class="card__head">
+            <h2>Sales pipeline</h2>
+            <span class="card__hint">Needs attention</span>
+          </div>
+          <div id="homeSalesList" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TO-DO -->
+    <section class="tab" id="tab-todo" data-tab-panel="todo">
+      <header class="pageHead">
+        <h1>To&#8209;Do</h1>
+        <p class="pageHead__sub">Everything across your business. Recurring items reset every week.</p>
+      </header>
+
+      <form class="card form-inline" id="todoForm">
+        <input type="text" name="text" placeholder="Add a task…" required maxlength="200" />
+        <select name="clientId">
+          <option value="">No client</option>
+        </select>
+        <label class="checkbox">
+          <input type="checkbox" name="recurring" />
+          <span>Repeats weekly</span>
+        </label>
+        <button type="submit" class="btn btn--primary">Add</button>
+      </form>
+
+      <div class="card">
+        <div class="card__head">
+          <h2>Tasks</h2>
+          <select id="todoFilter" class="select--small">
+            <option value="all">All clients</option>
+            <option value="none">Unassigned</option>
+          </select>
+        </div>
+        <div id="todoList" class="list list--tasks"></div>
+      </div>
+    </section>
+
+    <!-- REVENUE -->
+    <section class="tab" id="tab-revenue" data-tab-panel="revenue">
+      <header class="pageHead">
+        <h1>Revenue</h1>
+        <p class="pageHead__sub">Tracked against your monthly goal.</p>
+      </header>
+
+      <div class="card">
+        <div class="card__head">
+          <h2 id="revenueMonthLabel">This month</h2>
+          <div class="goalEditor">
+            <label for="revenueGoal">Goal</label>
+            <span>$</span>
+            <input type="number" id="revenueGoal" min="0" step="50" />
+          </div>
+        </div>
+        <div id="revenueMeter"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h2>Revenue streams</h2>
+          <span class="card__hint">By client / source, this month</span>
+        </div>
+        <div id="revenueBars" class="bars"></div>
+      </div>
+
+      <form class="card form-inline" id="revenueForm">
+        <input type="text" name="source" placeholder="Client or source…" required maxlength="80" />
+        <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required />
+        <input type="date" name="date" required />
+        <button type="submit" class="btn btn--primary">Add income</button>
+      </form>
+
+      <div class="card">
+        <div class="card__head"><h2>All entries</h2></div>
+        <div id="revenueEntries" class="list list--entries"></div>
+      </div>
+    </section>
+
+    <!-- EXPENSES -->
+    <section class="tab" id="tab-expenses" data-tab-panel="expenses">
+      <header class="pageHead">
+        <h1>Expenses</h1>
+        <p class="pageHead__sub">Keep full business expenses under budget every month.</p>
+      </header>
+
+      <div class="card">
+        <div class="card__head">
+          <h2 id="expenseMonthLabel">This month</h2>
+          <div class="goalEditor">
+            <label for="expenseGoal">Budget</label>
+            <span>$</span>
+            <input type="number" id="expenseGoal" min="0" step="25" />
+          </div>
+        </div>
+        <div id="expenseMeter"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h2>Expense breakdown</h2>
+          <span class="card__hint">By category, this month</span>
+        </div>
+        <div id="expenseBars" class="bars"></div>
+      </div>
+
+      <form class="card form-inline" id="expenseForm">
+        <input type="text" name="name" placeholder="Expense name…" required maxlength="80" />
+        <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required />
+        <input type="date" name="date" required />
+        <button type="submit" class="btn btn--primary">Add expense</button>
+      </form>
+
+      <div class="card">
+        <div class="card__head"><h2>All entries</h2></div>
+        <div id="expenseEntries" class="list list--entries"></div>
+      </div>
+    </section>
+
+    <!-- SALES -->
+    <section class="tab" id="tab-sales" data-tab-panel="sales">
+      <header class="pageHead">
+        <h1>Sales</h1>
+        <p class="pageHead__sub">Reached out → Follow&#8209;up → Meeting. A prospect flags itself after a week with no movement.</p>
+      </header>
+
+      <form class="card form-inline" id="prospectForm">
+        <input type="text" name="name" placeholder="Prospect name…" required maxlength="80" />
+        <input type="text" name="notes" placeholder="Notes (optional)" maxlength="140" />
+        <input type="date" name="date" required />
+        <button type="submit" class="btn btn--primary">Add prospect</button>
+      </form>
+
+      <button type="button" class="btn btn--ghost btn--small" id="notifyBtn">Enable follow&#8209;up notifications</button>
+
+      <div class="board" id="salesBoard">
+        <div class="board__col" data-stage="reached_out">
+          <h3>Reached out</h3>
+          <div class="board__list" data-stage-list="reached_out"></div>
+        </div>
+        <div class="board__col" data-stage="follow_up">
+          <h3>Follow&#8209;up</h3>
+          <div class="board__list" data-stage-list="follow_up"></div>
+        </div>
+        <div class="board__col" data-stage="meeting">
+          <h3>Meeting</h3>
+          <div class="board__list" data-stage-list="meeting"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="tab" id="tab-clients" data-tab-panel="clients">
+      <header class="pageHead">
+        <h1>Clients</h1>
+        <p class="pageHead__sub">Each client's tasks also show up in the main To&#8209;Do list.</p>
+      </header>
+
+      <form class="card form-inline" id="clientForm">
+        <input type="text" name="name" placeholder="Client name…" required maxlength="60" />
+        <input type="text" name="notes" placeholder="Notes (optional)" maxlength="140" />
+        <button type="submit" class="btn btn--primary">Add client</button>
+      </form>
+
+      <div id="clientBoards"></div>
+    </section>
+
+    <!-- IDEAS -->
+    <section class="tab" id="tab-ideas" data-tab-panel="ideas">
+      <header class="pageHead">
+        <h1>Ideas</h1>
+        <p class="pageHead__sub">A running list — nothing lost.</p>
+      </header>
+
+      <form class="card form-inline" id="ideaForm">
+        <input type="text" name="text" placeholder="Capture an idea…" required maxlength="240" />
+        <button type="submit" class="btn btn--primary">Add</button>
+      </form>
+
+      <div class="card">
+        <div id="ideaList" class="list"></div>
+      </div>
+    </section>
+
+    <!-- KEY LINKS -->
+    <section class="tab" id="tab-links" data-tab-panel="links">
+      <header class="pageHead">
+        <h1>Key Links</h1>
+        <p class="pageHead__sub">Frequently used websites, one click away.</p>
+      </header>
+
+      <form class="card form-inline" id="linkForm">
+        <input type="text" name="label" placeholder="Label…" required maxlength="60" />
+        <input type="text" name="url" placeholder="https://…" required />
+        <button type="submit" class="btn btn--primary">Add link</button>
+      </form>
+
+      <div class="card">
+        <div id="linkList" class="list list--links"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="dataModal" hidden>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <h2>Backup &amp; restore</h2>
+      <button type="button" class="btn btn--ghost btn--small" id="dataClose">Close</button>
+    </div>
+    <p class="modal__hint">Everything lives only in this browser. Export a backup regularly, or move your data to another computer by exporting here and importing there.</p>
+    <div class="modal__actions">
+      <button type="button" class="btn btn--secondary" id="exportBtn">Export JSON</button>
+      <button type="button" class="btn btn--secondary" id="importBtn">Import JSON</button>
+      <input type="file" id="importFile" accept="application/json" hidden />
+      <button type="button" class="btn btn--danger" id="resetBtn">Erase all data</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
