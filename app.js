@@ -4,12 +4,18 @@
 
 const STORAGE_KEY = 'bizdash_v1';
 
+const EXPENSE_CATEGORIES = [
+  'Office & Supplies', 'Software & Subscriptions', 'Marketing & Advertising', 'Travel',
+  'Meals & Entertainment', 'Professional & Legal Fees', 'Rent & Utilities', 'Equipment & Tools',
+  'Vehicle & Fuel', 'Insurance', 'Bank & Merchant Fees', 'Contractors & Wages', 'Other'
+];
+
 function defaultState() {
   return {
     todos: [],       // {id, text, done, doneWeek, recurring, clientId, createdAt}
     clients: [],      // {id, name, notes, createdAt}
-    revenue: { goal: 10000, entries: [] },  // entries: {id, source, amount, date}
-    expenses: { goal: 1000, entries: [] },  // entries: {id, name, amount, date}
+    revenue: { goal: 10000, entries: [] },  // entries: {id, source, amount, date, status: 'actual'|'expected'}
+    expenses: { goal: 1000, gstRate: 10, entries: [] },  // entries: {id, name, amount, date, category, includesGst}
     prospects: [],    // {id, name, notes, stage, reachedOutDate, updatedAt, notifiedAt}
     ideas: [],        // {id, text, createdAt}
     links: []         // {id, label, url}
@@ -23,7 +29,7 @@ function loadState() {
     const parsed = JSON.parse(raw);
     return Object.assign(defaultState(), parsed, {
       revenue: Object.assign({ goal: 10000, entries: [] }, parsed.revenue),
-      expenses: Object.assign({ goal: 1000, entries: [] }, parsed.expenses)
+      expenses: Object.assign({ goal: 1000, gstRate: 10, entries: [] }, parsed.expenses)
     });
   } catch (e) {
     console.error('Failed to load saved data, starting fresh.', e);
@@ -36,6 +42,9 @@ let state = loadState();
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
+
+// which single item (by id) is currently showing an inline edit form, per list
+const editing = { todo: null, client: null, revenue: null, expense: null, prospect: null, idea: null, link: null };
 
 /* ============================= helpers ============================= */
 
@@ -86,6 +95,15 @@ function escapeHtml(str) {
 function monthLabel(dateStr) {
   const d = dateStr ? new Date(dateStr + 'T00:00:00') : new Date();
   return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+function categoryOptions(selected) {
+  return EXPENSE_CATEGORIES.map(c => `<option value="${c}" ${c === selected ? 'selected' : ''}>${c}</option>`).join('');
+}
+
+function gstAmount(entry, rate) {
+  if (!entry.includesGst || !rate) return 0;
+  return entry.amount * (rate / (100 + rate));
 }
 
 /* ============================= tabs ============================= */
@@ -141,15 +159,45 @@ function clientChip(clientId) {
   return `<span class="task__chip">${escapeHtml(client.name)}</span>`;
 }
 
+function clientOptions(selectedId) {
+  return '<option value="">No client</option>' +
+    state.clients.map(c => `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('');
+}
+
 function renderTodoItem(todo, opts) {
   opts = opts || {};
+
+  if (editing.todo === todo.id) {
+    return `
+      <form class="inline-edit" data-action="save-todo-edit" data-id="${todo.id}">
+        <input type="text" name="text" value="${escapeHtml(todo.text)}" required maxlength="200" data-autofocus />
+        <select name="clientId">${clientOptions(todo.clientId)}</select>
+        <label class="checkbox">
+          <span>Due</span>
+          <input type="date" name="dueDate" value="${todo.dueDate || ''}" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="recurring" ${todo.recurring ? 'checked' : ''} />
+          <span>Repeats weekly</span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--small">Save</button>
+        <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="todo">Cancel</button>
+      </form>`;
+  }
+
   const done = isTodoDone(todo);
+  const overdue = todo.dueDate && !done && todo.dueDate < todayISO();
+  const dueChip = todo.dueDate
+    ? `<span class="task__chip ${overdue ? 'task__chip--expected' : ''}">${overdue ? 'Overdue ' : 'Due '}${fmtDate(todo.dueDate)}</span>`
+    : '';
   return `
     <div class="task" data-id="${todo.id}">
       <input type="checkbox" data-action="toggle-todo" data-id="${todo.id}" ${done ? 'checked' : ''} />
       <span class="task__text ${done ? 'is-done' : ''}">${escapeHtml(todo.text)}</span>
       ${todo.recurring ? '<span class="task__chip task__chip--recurring">Weekly</span>' : ''}
+      ${dueChip}
       ${opts.showClient ? clientChip(todo.clientId) : ''}
+      <button type="button" class="btn--icon" data-action="edit-todo" data-id="${todo.id}" title="Edit">✎</button>
       <button type="button" class="btn--icon" data-action="remove-todo" data-id="${todo.id}" title="Remove">✕</button>
     </div>`;
 }
@@ -160,8 +208,7 @@ function populateClientSelects() {
   const selects = document.querySelectorAll('select[name="clientId"]');
   selects.forEach(sel => {
     const current = sel.value;
-    sel.innerHTML = '<option value="">No client</option>' +
-      state.clients.map(c => `<option value="${c.id}">${escapeHtml(c.name)}</option>`).join('');
+    sel.innerHTML = clientOptions(null);
     sel.value = current;
   });
 
@@ -172,8 +219,15 @@ function populateClientSelects() {
   if ([...filter.options].some(o => o.value === currentFilter)) filter.value = currentFilter;
 }
 
+function populateCategorySelect() {
+  const sel = document.getElementById('expenseCategory');
+  const current = sel.value;
+  sel.innerHTML = categoryOptions(current);
+  if (!sel.value) sel.value = EXPENSE_CATEGORIES[0];
+}
+
 function renderMeter(container, opts) {
-  // opts: value, goal, kind: 'revenue'|'expense', label
+  // opts: value, goal, kind: 'revenue'|'expense', extra (optional trailing note)
   const pct = opts.goal > 0 ? Math.min(100, (opts.value / opts.goal) * 100) : 0;
   const isExpense = opts.kind === 'expense';
   const over = isExpense && opts.value > opts.goal;
@@ -196,7 +250,7 @@ function renderMeter(container, opts) {
 
   container.innerHTML = `
     <div class="meter__figure">${fmtMoney(opts.value)}</div>
-    <div class="meter__sub">of ${fmtMoney(opts.goal)} goal (${Math.round(opts.goal > 0 ? (opts.value / opts.goal) * 100 : 0)}%)</div>
+    <div class="meter__sub">of ${fmtMoney(opts.goal)} goal (${Math.round(opts.goal > 0 ? (opts.value / opts.goal) * 100 : 0)}%)${opts.extra ? ' · ' + opts.extra : ''}</div>
     <div class="meter__track ${trackClass}"><div class="meter__fill ${fillClass}" style="width:${pct}%"></div></div>
     ${statusHtml}
   `;
@@ -219,10 +273,10 @@ function renderBars(container, items, kind) {
   `).join('');
 }
 
-function groupSum(entries, key) {
+function groupSum(entries, key, fallback) {
   const map = new Map();
   entries.forEach(e => {
-    const k = e[key];
+    const k = e[key] || fallback || e[key];
     map.set(k, (map.get(k) || 0) + Number(e.amount));
   });
   return [...map.entries()].map(([label, value]) => ({ label, value }));
@@ -244,8 +298,11 @@ function renderHome() {
     new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
   const revMonth = entriesForCurrentMonth(state.revenue.entries);
+  const revActual = revMonth.filter(e => (e.status || 'actual') === 'actual');
+  const revExpected = revMonth.filter(e => (e.status || 'actual') === 'expected');
+  const revTotal = sumAmount(revActual);
+  const revExpectedTotal = sumAmount(revExpected);
   const expMonth = entriesForCurrentMonth(state.expenses.entries);
-  const revTotal = sumAmount(revMonth);
   const expTotal = sumAmount(expMonth);
 
   const openTodos = state.todos.filter(t => !isTodoDone(t));
@@ -266,7 +323,10 @@ function renderHome() {
     </div>
   `).join('');
 
-  renderMeter(document.getElementById('homeRevenueMeter'), { value: revTotal, goal: state.revenue.goal, kind: 'revenue' });
+  renderMeter(document.getElementById('homeRevenueMeter'), {
+    value: revTotal, goal: state.revenue.goal, kind: 'revenue',
+    extra: revExpectedTotal > 0 ? `+${fmtMoney(revExpectedTotal)} expected` : ''
+  });
   renderMeter(document.getElementById('homeExpenseMeter'), { value: expTotal, goal: state.expenses.goal, kind: 'expense' });
 
   const homeTodos = openTodos.slice().sort((a, b) => (b.recurring - a.recurring)).slice(0, 6);
@@ -317,47 +377,119 @@ function renderTodo() {
     : '<div class="list__empty">No tasks yet — add one above.</div>';
 }
 
-/* ---- Revenue / Expenses ---- */
+/* ---- Revenue ---- */
+
+function renderRevenueEntryRow(entry) {
+  if (editing.revenue === entry.id) {
+    return `
+      <form class="inline-edit" data-action="save-revenue-edit" data-id="${entry.id}">
+        <input type="text" name="source" value="${escapeHtml(entry.source)}" required maxlength="80" data-autofocus />
+        <input type="number" name="amount" value="${entry.amount}" min="0" step="0.01" required />
+        <input type="date" name="date" value="${entry.date}" required />
+        <label class="checkbox">
+          <input type="checkbox" name="expected" ${(entry.status || 'actual') === 'expected' ? 'checked' : ''} />
+          <span>Expected</span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--small">Save</button>
+        <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="revenue">Cancel</button>
+      </form>`;
+  }
+
+  const status = entry.status || 'actual';
+  return `
+    <div class="entry-row" data-id="${entry.id}">
+      <input type="checkbox" data-action="toggle-revenue-status" data-id="${entry.id}" ${status === 'actual' ? 'checked' : ''} title="Tick once the money actually lands" />
+      <span class="entry-row__date">${fmtDate(entry.date)}</span>
+      <span class="entry-row__name">${escapeHtml(entry.source)}</span>
+      <span class="task__chip ${status === 'expected' ? 'task__chip--expected' : 'task__chip--actual'}">${status === 'expected' ? 'Expected' : 'Actual'}</span>
+      <span class="entry-row__amount">${fmtMoney(entry.amount)}</span>
+      <button type="button" class="btn--icon" data-action="edit-revenue" data-id="${entry.id}" title="Edit">✎</button>
+      <button type="button" class="btn--icon" data-action="remove-revenue" data-id="${entry.id}" title="Remove">✕</button>
+    </div>`;
+}
 
 function renderRevenue() {
   document.getElementById('revenueGoal').value = state.revenue.goal;
   document.getElementById('revenueMonthLabel').textContent = `This month — ${monthLabel()}`;
 
   const month = entriesForCurrentMonth(state.revenue.entries);
-  renderMeter(document.getElementById('revenueMeter'), { value: sumAmount(month), goal: state.revenue.goal, kind: 'revenue' });
-  renderBars(document.getElementById('revenueBars'), groupSum(month, 'source'), 'revenue');
+  const actualMonth = month.filter(e => (e.status || 'actual') === 'actual');
+  const expectedMonth = month.filter(e => (e.status || 'actual') === 'expected');
+  const actualTotal = sumAmount(actualMonth);
+  const expectedTotal = sumAmount(expectedMonth);
+
+  renderMeter(document.getElementById('revenueMeter'), {
+    value: actualTotal, goal: state.revenue.goal, kind: 'revenue',
+    extra: expectedTotal > 0 ? `+${fmtMoney(expectedTotal)} expected` : ''
+  });
+  renderBars(document.getElementById('revenueBars'), groupSum(actualMonth, 'source'), 'revenue');
+
+  const potential = expectedMonth.slice().sort((a, b) => a.date.localeCompare(b.date));
+  document.getElementById('potentialIncomings').innerHTML = potential.length
+    ? potential.map(renderRevenueEntryRow).join('') +
+      `<div class="entry-row" style="border-bottom:none"><span class="entry-row__name" style="font-weight:600">Total potential</span><span class="entry-row__amount">${fmtMoney(expectedTotal)}</span></div>`
+    : '<div class="list__empty">Nothing expected right now — add income below and tick "Expected".</div>';
 
   const all = state.revenue.entries.slice().sort((a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt);
   document.getElementById('revenueEntries').innerHTML = all.length
-    ? all.map(e => `
-        <div class="entry-row">
-          <span class="entry-row__date">${fmtDate(e.date)}</span>
-          <span class="entry-row__name">${escapeHtml(e.source)}</span>
-          <span class="entry-row__amount">${fmtMoney(e.amount)}</span>
-          <button type="button" class="btn--icon" data-action="remove-revenue" data-id="${e.id}" title="Remove">✕</button>
-        </div>
-      `).join('')
+    ? all.map(renderRevenueEntryRow).join('')
     : '<div class="list__empty">No income logged yet.</div>';
+}
+
+/* ---- Expenses ---- */
+
+function renderExpenseEntryRow(entry) {
+  if (editing.expense === entry.id) {
+    return `
+      <form class="inline-edit" data-action="save-expense-edit" data-id="${entry.id}">
+        <input type="text" name="name" value="${escapeHtml(entry.name)}" required maxlength="80" data-autofocus />
+        <input type="number" name="amount" value="${entry.amount}" min="0" step="0.01" required />
+        <input type="date" name="date" value="${entry.date}" required />
+        <select name="category">${categoryOptions(entry.category || 'Other')}</select>
+        <label class="checkbox">
+          <input type="checkbox" name="includesGst" ${entry.includesGst ? 'checked' : ''} />
+          <span>Includes GST</span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--small">Save</button>
+        <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="expense">Cancel</button>
+      </form>`;
+  }
+
+  const gst = gstAmount(entry, state.expenses.gstRate);
+  return `
+    <div class="entry-row" data-id="${entry.id}">
+      <span class="entry-row__date">${fmtDate(entry.date)}</span>
+      <span class="entry-row__name">${escapeHtml(entry.name)}</span>
+      <span class="task__chip">${escapeHtml(entry.category || 'Other')}</span>
+      ${entry.includesGst ? `<span class="task__chip task__chip--gst">GST ${fmtMoney(gst)}</span>` : ''}
+      <span class="entry-row__amount">${fmtMoney(entry.amount)}</span>
+      <button type="button" class="btn--icon" data-action="edit-expense" data-id="${entry.id}" title="Edit">✎</button>
+      <button type="button" class="btn--icon" data-action="remove-expense" data-id="${entry.id}" title="Remove">✕</button>
+    </div>`;
 }
 
 function renderExpenses() {
   document.getElementById('expenseGoal').value = state.expenses.goal;
+  document.getElementById('gstRate').value = state.expenses.gstRate;
   document.getElementById('expenseMonthLabel').textContent = `This month — ${monthLabel()}`;
+  populateCategorySelect();
 
   const month = entriesForCurrentMonth(state.expenses.entries);
   renderMeter(document.getElementById('expenseMeter'), { value: sumAmount(month), goal: state.expenses.goal, kind: 'expense' });
-  renderBars(document.getElementById('expenseBars'), groupSum(month, 'name'), 'expense');
+
+  const rate = state.expenses.gstRate;
+  const gstTotal = month.reduce((s, e) => s + gstAmount(e, rate), 0);
+  const gstEl = document.getElementById('expenseGstStat');
+  gstEl.classList.toggle('is-good', gstTotal > 0);
+  gstEl.textContent = gstTotal > 0
+    ? `GST reclaimable this month: ${fmtMoney(gstTotal)} (at ${rate}%)`
+    : 'No GST-inclusive expenses logged this month yet.';
+
+  renderBars(document.getElementById('expenseBars'), groupSum(month, 'category', 'Other'), 'expense');
 
   const all = state.expenses.entries.slice().sort((a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt);
   document.getElementById('expenseEntries').innerHTML = all.length
-    ? all.map(e => `
-        <div class="entry-row">
-          <span class="entry-row__date">${fmtDate(e.date)}</span>
-          <span class="entry-row__name">${escapeHtml(e.name)}</span>
-          <span class="entry-row__amount">${fmtMoney(e.amount)}</span>
-          <button type="button" class="btn--icon" data-action="remove-expense" data-id="${e.id}" title="Remove">✕</button>
-        </div>
-      `).join('')
+    ? all.map(renderExpenseEntryRow).join('')
     : '<div class="list__empty">No expenses logged yet.</div>';
 }
 
@@ -367,6 +499,19 @@ const STAGE_LABELS = { reached_out: 'Reached out', follow_up: 'Follow-up', meeti
 const STAGE_ORDER = ['reached_out', 'follow_up', 'meeting'];
 
 function renderProspectCard(p) {
+  if (editing.prospect === p.id) {
+    return `
+      <div class="prospect" data-id="${p.id}">
+        <form class="inline-edit" data-action="save-prospect-edit" data-id="${p.id}" style="margin:0">
+          <input type="text" name="name" value="${escapeHtml(p.name)}" required maxlength="80" data-autofocus />
+          <input type="text" name="notes" value="${escapeHtml(p.notes || '')}" placeholder="Notes (optional)" maxlength="140" />
+          <input type="date" name="date" value="${p.reachedOutDate}" required />
+          <button type="submit" class="btn btn--primary btn--small">Save</button>
+          <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="prospect">Cancel</button>
+        </form>
+      </div>`;
+  }
+
   const overdue = p.stage === 'reached_out' && daysSince(p.reachedOutDate) >= 7;
   const nextStage = STAGE_ORDER[STAGE_ORDER.indexOf(p.stage) + 1];
   return `
@@ -377,6 +522,7 @@ function renderProspectCard(p) {
       ${overdue ? `<div class="prospect__flag">⚠ Follow up now</div>` : ''}
       <div class="prospect__actions">
         ${nextStage ? `<button type="button" class="btn btn--secondary" data-action="advance-prospect" data-id="${p.id}">Move to ${STAGE_LABELS[nextStage]}</button>` : ''}
+        <button type="button" class="btn--icon" data-action="edit-prospect" data-id="${p.id}" title="Edit">✎</button>
         <button type="button" class="btn--icon" data-action="remove-prospect" data-id="${p.id}" title="Remove">✕</button>
       </div>
     </div>
@@ -408,16 +554,29 @@ function renderClients() {
         return b.createdAt - a.createdAt;
       });
     const revenueFromClient = sumAmount(
-      state.revenue.entries.filter(e => e.source.trim().toLowerCase() === client.name.trim().toLowerCase())
+      state.revenue.entries.filter(e =>
+        (e.status || 'actual') === 'actual' &&
+        e.source.trim().toLowerCase() === client.name.trim().toLowerCase())
     );
+
+    const headBlock = editing.client === client.id
+      ? `<form class="inline-edit" data-action="save-client-edit" data-id="${client.id}" style="flex:1">
+           <input type="text" name="name" value="${escapeHtml(client.name)}" required maxlength="60" data-autofocus />
+           <input type="text" name="notes" value="${escapeHtml(client.notes || '')}" placeholder="Notes (optional)" maxlength="140" />
+           <button type="submit" class="btn btn--primary btn--small">Save</button>
+           <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="client">Cancel</button>
+         </form>`
+      : `<h2>${escapeHtml(client.name)}</h2>
+         <div style="display:flex;gap:2px">
+           <button type="button" class="btn--icon" data-action="edit-client" data-id="${client.id}" title="Edit">✎</button>
+           <button type="button" class="btn--icon" data-action="remove-client" data-id="${client.id}" title="Remove client">✕</button>
+         </div>`;
+
     return `
       <div class="clientBoard" data-id="${client.id}">
-        <div class="clientBoard__head">
-          <h2>${escapeHtml(client.name)}</h2>
-          <button type="button" class="btn--icon" data-action="remove-client" data-id="${client.id}" title="Remove client">✕</button>
-        </div>
-        ${client.notes ? `<p class="clientBoard__notes">${escapeHtml(client.notes)}</p>` : ''}
-        ${revenueFromClient > 0 ? `<p class="clientBoard__revenue">${fmtMoney(revenueFromClient)} in logged revenue all-time</p>` : ''}
+        <div class="clientBoard__head">${headBlock}</div>
+        ${editing.client !== client.id && client.notes ? `<p class="clientBoard__notes">${escapeHtml(client.notes)}</p>` : ''}
+        ${revenueFromClient > 0 ? `<p class="clientBoard__revenue">${fmtMoney(revenueFromClient)} in confirmed revenue all-time</p>` : ''}
         <form class="clientBoard__form" data-action="client-todo-form" data-client-id="${client.id}">
           <input type="text" name="text" placeholder="Add a task for ${escapeHtml(client.name)}…" maxlength="200" required />
           <button type="submit" class="btn btn--secondary">Add</button>
@@ -435,12 +594,17 @@ function renderClients() {
 function renderIdeas() {
   const items = state.ideas.slice().sort((a, b) => b.createdAt - a.createdAt);
   document.getElementById('ideaList').innerHTML = items.length
-    ? items.map(i => `
+    ? items.map(i => editing.idea === i.id ? `
+        <form class="inline-edit" data-action="save-idea-edit" data-id="${i.id}">
+          <input type="text" name="text" value="${escapeHtml(i.text)}" required maxlength="240" data-autofocus />
+          <button type="submit" class="btn btn--primary btn--small">Save</button>
+          <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="idea">Cancel</button>
+        </form>` : `
         <div class="task">
           <span class="task__text">${escapeHtml(i.text)}</span>
+          <button type="button" class="btn--icon" data-action="edit-idea" data-id="${i.id}" title="Edit">✎</button>
           <button type="button" class="btn--icon" data-action="remove-idea" data-id="${i.id}" title="Remove">✕</button>
-        </div>
-      `).join('')
+        </div>`).join('')
     : '<div class="list__empty">No ideas captured yet.</div>';
 }
 
@@ -449,13 +613,19 @@ function renderIdeas() {
 function renderLinks() {
   const items = state.links.slice().sort((a, b) => a.label.localeCompare(b.label));
   document.getElementById('linkList').innerHTML = items.length
-    ? items.map(l => `
+    ? items.map(l => editing.link === l.id ? `
+        <form class="inline-edit" data-action="save-link-edit" data-id="${l.id}">
+          <input type="text" name="label" value="${escapeHtml(l.label)}" required maxlength="60" data-autofocus />
+          <input type="text" name="url" value="${escapeHtml(l.url)}" required />
+          <button type="submit" class="btn btn--primary btn--small">Save</button>
+          <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="link">Cancel</button>
+        </form>` : `
         <div class="link-row">
           <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label)}</a>
           <span class="link-row__url">${escapeHtml(l.url.replace(/^https?:\/\//, ''))}</span>
+          <button type="button" class="btn--icon" data-action="edit-link" data-id="${l.id}" title="Edit">✎</button>
           <button type="button" class="btn--icon" data-action="remove-link" data-id="${l.id}" title="Remove">✕</button>
-        </div>
-      `).join('')
+        </div>`).join('')
     : '<div class="list__empty">No links saved yet.</div>';
 }
 
@@ -471,6 +641,9 @@ function renderAll() {
   renderClients();
   renderIdeas();
   renderLinks();
+
+  const autofocus = document.querySelector('[data-autofocus]');
+  if (autofocus) autofocus.focus();
 }
 
 /* ============================= follow-up notifications ============================= */
@@ -501,7 +674,7 @@ document.getElementById('notifyBtn').addEventListener('click', () => {
   });
 });
 
-/* ============================= event wiring ============================= */
+/* ============================= event wiring — add forms ============================= */
 
 document.getElementById('todoForm').addEventListener('submit', e => {
   e.preventDefault();
@@ -514,6 +687,7 @@ document.getElementById('todoForm').addEventListener('submit', e => {
     doneWeek: null,
     recurring: !!data.get('recurring'),
     clientId: data.get('clientId') || null,
+    dueDate: data.get('dueDate') || null,
     createdAt: Date.now()
   });
   save();
@@ -532,6 +706,7 @@ document.getElementById('revenueForm').addEventListener('submit', e => {
     source: data.get('source').trim(),
     amount: Number(data.get('amount')),
     date: data.get('date'),
+    status: data.get('expected') ? 'expected' : 'actual',
     createdAt: Date.now()
   });
   save();
@@ -549,6 +724,8 @@ document.getElementById('expenseForm').addEventListener('submit', e => {
     name: data.get('name').trim(),
     amount: Number(data.get('amount')),
     date: data.get('date'),
+    category: data.get('category') || 'Other',
+    includesGst: !!data.get('includesGst'),
     createdAt: Date.now()
   });
   save();
@@ -557,16 +734,35 @@ document.getElementById('expenseForm').addEventListener('submit', e => {
   renderAll();
 });
 
+// These fire on blur, which can happen a split second before a click on an
+// edit/remove button elsewhere in the same list — re-rendering immediately
+// would replace that button mid-click and swallow the click. Deferring the
+// re-render to the next tick lets the in-flight click finish first.
 document.getElementById('revenueGoal').addEventListener('change', e => {
-  state.revenue.goal = Math.max(0, Number(e.target.value) || 0);
-  save();
-  renderAll();
+  const value = Math.max(0, Number(e.target.value) || 0);
+  setTimeout(() => {
+    state.revenue.goal = value;
+    save();
+    renderAll();
+  }, 0);
 });
 
 document.getElementById('expenseGoal').addEventListener('change', e => {
-  state.expenses.goal = Math.max(0, Number(e.target.value) || 0);
-  save();
-  renderAll();
+  const value = Math.max(0, Number(e.target.value) || 0);
+  setTimeout(() => {
+    state.expenses.goal = value;
+    save();
+    renderAll();
+  }, 0);
+});
+
+document.getElementById('gstRate').addEventListener('change', e => {
+  const value = Math.max(0, Number(e.target.value) || 0);
+  setTimeout(() => {
+    state.expenses.gstRate = value;
+    save();
+    renderAll();
+  }, 0);
 });
 
 document.getElementById('prospectForm').addEventListener('submit', e => {
@@ -625,7 +821,141 @@ document.getElementById('linkForm').addEventListener('submit', e => {
   renderAll();
 });
 
-// delegated clicks (dynamic content)
+/* ============================= event wiring — edit forms (delegated) ============================= */
+
+document.addEventListener('submit', e => {
+  const form = e.target;
+  const action = form.dataset.action;
+  if (!action) return;
+
+  if (action === 'client-todo-form') {
+    e.preventDefault();
+    const text = new FormData(form).get('text').trim();
+    if (!text) return;
+    state.todos.push({
+      id: uid(), text, done: false, doneWeek: null, recurring: false,
+      clientId: form.dataset.clientId, dueDate: null, createdAt: Date.now()
+    });
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-todo-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const todo = state.todos.find(t => t.id === form.dataset.id);
+    if (todo) {
+      const wasDone = isTodoDone(todo);
+      todo.text = data.get('text').trim();
+      todo.clientId = data.get('clientId') || null;
+      todo.dueDate = data.get('dueDate') || null;
+      todo.recurring = !!data.get('recurring');
+      if (todo.recurring) {
+        todo.doneWeek = wasDone ? isoWeekKey() : null;
+      } else {
+        todo.done = wasDone;
+        todo.doneWeek = null;
+      }
+    }
+    editing.todo = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-client-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const client = state.clients.find(c => c.id === form.dataset.id);
+    if (client) {
+      client.name = data.get('name').trim();
+      client.notes = (data.get('notes') || '').trim();
+    }
+    editing.client = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-revenue-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const entry = state.revenue.entries.find(x => x.id === form.dataset.id);
+    if (entry) {
+      entry.source = data.get('source').trim();
+      entry.amount = Number(data.get('amount'));
+      entry.date = data.get('date');
+      entry.status = data.get('expected') ? 'expected' : 'actual';
+    }
+    editing.revenue = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-expense-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const entry = state.expenses.entries.find(x => x.id === form.dataset.id);
+    if (entry) {
+      entry.name = data.get('name').trim();
+      entry.amount = Number(data.get('amount'));
+      entry.date = data.get('date');
+      entry.category = data.get('category') || 'Other';
+      entry.includesGst = !!data.get('includesGst');
+    }
+    editing.expense = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-prospect-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const p = state.prospects.find(x => x.id === form.dataset.id);
+    if (p) {
+      p.name = data.get('name').trim();
+      p.notes = (data.get('notes') || '').trim();
+      p.reachedOutDate = data.get('date');
+    }
+    editing.prospect = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-idea-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const idea = state.ideas.find(x => x.id === form.dataset.id);
+    if (idea) idea.text = data.get('text').trim();
+    editing.idea = null;
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-link-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const link = state.links.find(x => x.id === form.dataset.id);
+    if (link) {
+      link.label = data.get('label').trim();
+      let url = data.get('url').trim();
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      link.url = url;
+    }
+    editing.link = null;
+    save();
+    renderAll();
+    return;
+  }
+});
+
+/* ============================= delegated clicks & changes ============================= */
+
 document.addEventListener('click', e => {
   const btn = e.target.closest('[data-action]');
   if (!btn) return;
@@ -655,31 +985,27 @@ document.addEventListener('click', e => {
       renderAll();
     }
   }
+  else if (action === 'edit-todo') { editing.todo = id; renderAll(); }
+  else if (action === 'edit-client') { editing.client = id; renderAll(); }
+  else if (action === 'edit-revenue') { editing.revenue = id; renderAll(); }
+  else if (action === 'edit-expense') { editing.expense = id; renderAll(); }
+  else if (action === 'edit-prospect') { editing.prospect = id; renderAll(); }
+  else if (action === 'edit-idea') { editing.idea = id; renderAll(); }
+  else if (action === 'edit-link') { editing.link = id; renderAll(); }
+  else if (action === 'cancel-edit') { editing[btn.dataset.kind] = null; renderAll(); }
 });
 
 document.addEventListener('change', e => {
   if (e.target.matches('[data-action="toggle-todo"]')) {
     toggleTodo(e.target.dataset.id);
+  } else if (e.target.matches('[data-action="toggle-revenue-status"]')) {
+    const entry = state.revenue.entries.find(x => x.id === e.target.dataset.id);
+    if (entry) {
+      entry.status = e.target.checked ? 'actual' : 'expected';
+      save();
+      renderAll();
+    }
   }
-});
-
-document.addEventListener('submit', e => {
-  const form = e.target.closest('[data-action="client-todo-form"]');
-  if (!form) return;
-  e.preventDefault();
-  const text = new FormData(form).get('text').trim();
-  if (!text) return;
-  state.todos.push({
-    id: uid(),
-    text,
-    done: false,
-    doneWeek: null,
-    recurring: false,
-    clientId: form.dataset.clientId,
-    createdAt: Date.now()
-  });
-  save();
-  renderAll();
 });
 
 /* ============================= theme toggle ============================= */
@@ -732,7 +1058,7 @@ document.getElementById('importFile').addEventListener('change', e => {
       if (!confirm('Import this backup? It will replace all data currently in the dashboard.')) return;
       state = Object.assign(defaultState(), parsed, {
         revenue: Object.assign({ goal: 10000, entries: [] }, parsed.revenue),
-        expenses: Object.assign({ goal: 1000, entries: [] }, parsed.expenses)
+        expenses: Object.assign({ goal: 1000, gstRate: 10, entries: [] }, parsed.expenses)
       });
       save();
       renderAll();

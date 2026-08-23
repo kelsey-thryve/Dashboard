@@ -23,14 +23,23 @@ doesn't fetch anything external.)
 
 - **Home** — the day at a glance: revenue/expense progress, open tasks,
   prospects waiting on a follow-up.
-- **To-Do** — add and remove tasks. Check "Repeats weekly" on a task and it
-  automatically resets to open every week once you've checked it off, instead
-  of needing to be recreated. Tasks can optionally be tied to a client.
+- **To-Do** — add and remove tasks, with an optional due date (editable any
+  time via the pencil icon — it turns red once it's passed and the task is
+  still open). Check "Repeats weekly" on a task and it automatically resets
+  to open every week once you've checked it off, instead of needing to be
+  recreated. Tasks can optionally be tied to a client.
 - **Revenue** — set your monthly goal (defaults to $10,000), log income by
   client/source, see a progress meter and a breakdown chart for the current
-  month.
+  month. Tick "Expected" on an entry to log it as a potential incoming rather
+  than money in hand — it shows up in its own "Potential incomings" list and
+  doesn't count toward the goal meter until you tick it back to received.
 - **Expenses** — same pattern, with a monthly budget (defaults to $1,000).
-  The meter turns red if you go over.
+  The meter turns red if you go over. Each expense can be tagged with a
+  category and marked "Includes GST"; the GST rate is editable (defaults to
+  10%), and the tab shows an estimated GST-reclaimable total for the month.
+  That's a starting estimate for your own tracking — some categories (like
+  entertainment) may not be fully claimable, so confirm with your
+  accountant/bookkeeper before lodging anything.
 - **Sales** — a three-column pipeline: Reached out → Follow-up → Meeting. Any
   prospect still sitting in "Reached out" after 7 days is flagged in the UI
   and on the Home banner. Click "Enable follow-up notifications" to also get
@@ -43,6 +52,9 @@ doesn't fetch anything external.)
   single client.
 - **Ideas** — a running scratch list.
 - **Key Links** — frequently used sites, one click away.
+- **Editing** — every list (To-Do, Revenue, Expenses, Sales, Clients, Ideas,
+  Key Links) has a pencil icon next to each entry to edit it in place, not
+  just add/remove.
 
 ## Backing up your data
 

@@ -90,6 +90,10 @@
           <option value="">No client</option>
         </select>
         <label class="checkbox">
+          <span>Due</span>
+          <input type="date" name="dueDate" />
+        </label>
+        <label class="checkbox">
           <input type="checkbox" name="recurring" />
           <span>Repeats weekly</span>
         </label>
@@ -129,8 +133,16 @@
 
       <div class="card">
         <div class="card__head">
+          <h2>Potential incomings</h2>
+          <span class="card__hint">Expected this month — tick once it actually lands</span>
+        </div>
+        <div id="potentialIncomings" class="list list--entries"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
           <h2>Revenue streams</h2>
-          <span class="card__hint">By client / source, this month</span>
+          <span class="card__hint">By client / source, actual income this month</span>
         </div>
         <div id="revenueBars" class="bars"></div>
       </div>
@@ -139,7 +151,11 @@
         <input type="text" name="source" placeholder="Client or source…" required maxlength="80" />
         <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required />
         <input type="date" name="date" required />
-        <button type="submit" class="btn btn--primary">Add income</button>
+        <label class="checkbox">
+          <input type="checkbox" name="expected" />
+          <span>Expected (not received yet)</span>
+        </label>
+        <button type="submit" class="btn btn--primary">Add</button>
       </form>
 
       <div class="card">
@@ -159,12 +175,16 @@
         <div class="card__head">
           <h2 id="expenseMonthLabel">This month</h2>
           <div class="goalEditor">
-            <label for="expenseGoal">Budget</label>
+            <label for="gstRate">GST rate</label>
+            <input type="number" id="gstRate" min="0" max="100" step="0.5" style="width:56px" />
+            <span>%</span>
+            <label for="expenseGoal" style="margin-left:10px">Budget</label>
             <span>$</span>
             <input type="number" id="expenseGoal" min="0" step="25" />
           </div>
         </div>
         <div id="expenseMeter"></div>
+        <div id="expenseGstStat" class="meter__status"></div>
       </div>
 
       <div class="card">
@@ -179,8 +199,14 @@
         <input type="text" name="name" placeholder="Expense name…" required maxlength="80" />
         <input type="number" name="amount" placeholder="Amount" min="0" step="0.01" required />
         <input type="date" name="date" required />
+        <select name="category" id="expenseCategory"></select>
+        <label class="checkbox">
+          <input type="checkbox" name="includesGst" />
+          <span>Includes GST</span>
+        </label>
         <button type="submit" class="btn btn--primary">Add expense</button>
       </form>
+      <p class="modal__hint" style="margin:-8px 0 16px">GST reclaimable is estimated from the rate above on entries marked "Includes GST" — some categories (like entertainment) may not be fully claimable, so check with your accountant/bookkeeper before lodging.</p>
 
       <div class="card">
         <div class="card__head"><h2>All entries</h2></div>
