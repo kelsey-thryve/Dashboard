@@ -678,6 +678,23 @@ document.getElementById('notifyBtn').addEventListener('click', () => {
   });
 });
 
+document.getElementById('resetReachedOutBtn').addEventListener('click', () => {
+  const toReset = state.prospects.filter(p => p.stage === 'reached_out');
+  if (!toReset.length) {
+    alert('Nothing is currently in "Reached out".');
+    return;
+  }
+  if (!confirm(`Move all ${toReset.length} prospect${toReset.length > 1 ? 's' : ''} in "Reached out" back to "Prospects"?`)) return;
+  toReset.forEach(p => {
+    p.stage = 'prospect';
+    p.reachedOutDate = null;
+    p.notifiedAt = null;
+    p.updatedAt = Date.now();
+  });
+  save();
+  renderAll();
+});
+
 /* ============================= event wiring — add forms ============================= */
 
 document.getElementById('todoForm').addEventListener('submit', e => {
