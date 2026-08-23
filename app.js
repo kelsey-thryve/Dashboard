@@ -495,8 +495,8 @@ function renderExpenses() {
 
 /* ---- Sales ---- */
 
-const STAGE_LABELS = { reached_out: 'Reached out', follow_up: 'Follow-up', meeting: 'Meeting' };
-const STAGE_ORDER = ['reached_out', 'follow_up', 'meeting'];
+const STAGE_LABELS = { prospect: 'Prospects', reached_out: 'Reached out', follow_up: 'Follow-up', meeting: 'Meeting' };
+const STAGE_ORDER = ['prospect', 'reached_out', 'follow_up', 'meeting'];
 
 function renderProspectCard(p) {
   if (editing.prospect === p.id) {
@@ -505,7 +505,7 @@ function renderProspectCard(p) {
         <form class="inline-edit" data-action="save-prospect-edit" data-id="${p.id}" style="margin:0">
           <input type="text" name="name" value="${escapeHtml(p.name)}" required maxlength="80" data-autofocus />
           <input type="text" name="notes" value="${escapeHtml(p.notes || '')}" placeholder="Notes (optional)" maxlength="140" />
-          <input type="date" name="date" value="${p.reachedOutDate}" required />
+          ${p.stage !== 'prospect' ? `<input type="date" name="date" value="${p.reachedOutDate || ''}" required />` : ''}
           <button type="submit" class="btn btn--primary btn--small">Save</button>
           <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="prospect">Cancel</button>
         </form>
@@ -514,11 +514,14 @@ function renderProspectCard(p) {
 
   const overdue = p.stage === 'reached_out' && daysSince(p.reachedOutDate) >= 7;
   const nextStage = STAGE_ORDER[STAGE_ORDER.indexOf(p.stage) + 1];
+  const metaLine = p.stage === 'prospect'
+    ? `Added ${fmtDate(new Date(p.createdAt || Date.now()).toISOString().slice(0, 10))}`
+    : `Reached out ${fmtDate(p.reachedOutDate)} · ${daysSince(p.reachedOutDate)}d ago`;
   return `
     <div class="prospect ${overdue ? 'is-overdue' : ''}" data-id="${p.id}">
       <div class="prospect__name">${escapeHtml(p.name)}</div>
       ${p.notes ? `<div class="prospect__notes">${escapeHtml(p.notes)}</div>` : ''}
-      <div class="prospect__meta">Reached out ${fmtDate(p.reachedOutDate)} · ${daysSince(p.reachedOutDate)}d ago</div>
+      <div class="prospect__meta">${metaLine}</div>
       ${overdue ? `<div class="prospect__flag">⚠ Follow up now</div>` : ''}
       <div class="prospect__actions">
         ${nextStage ? `<button type="button" class="btn btn--secondary" data-action="advance-prospect" data-id="${p.id}">Move to ${STAGE_LABELS[nextStage]}</button>` : ''}
@@ -531,7 +534,8 @@ function renderProspectCard(p) {
 
 function renderSales() {
   STAGE_ORDER.forEach(stage => {
-    const list = state.prospects.filter(p => p.stage === stage).sort((a, b) => a.reachedOutDate.localeCompare(b.reachedOutDate));
+    const list = state.prospects.filter(p => p.stage === stage)
+      .sort((a, b) => (a.reachedOutDate || '').localeCompare(b.reachedOutDate || '') || (a.createdAt || 0) - (b.createdAt || 0));
     const el = document.querySelector(`[data-stage-list="${stage}"]`);
     el.innerHTML = list.length ? list.map(renderProspectCard).join('') : '<div class="list__empty">Empty</div>';
   });
@@ -773,14 +777,14 @@ document.getElementById('prospectForm').addEventListener('submit', e => {
     id: uid(),
     name: data.get('name').trim(),
     notes: (data.get('notes') || '').trim(),
-    stage: 'reached_out',
-    reachedOutDate: data.get('date'),
+    stage: 'prospect',
+    reachedOutDate: null,
+    createdAt: Date.now(),
     updatedAt: Date.now(),
     notifiedAt: null
   });
   save();
   form.reset();
-  document.querySelector('#prospectForm input[name="date"]').value = todayISO();
   renderAll();
 });
 
@@ -918,7 +922,7 @@ document.addEventListener('submit', e => {
     if (p) {
       p.name = data.get('name').trim();
       p.notes = (data.get('notes') || '').trim();
-      p.reachedOutDate = data.get('date');
+      if (data.has('date')) p.reachedOutDate = data.get('date');
     }
     editing.prospect = null;
     save();
@@ -980,7 +984,11 @@ document.addEventListener('click', e => {
     const p = state.prospects.find(x => x.id === id);
     if (p) {
       const next = STAGE_ORDER[STAGE_ORDER.indexOf(p.stage) + 1];
-      if (next) { p.stage = next; p.updatedAt = Date.now(); }
+      if (next) {
+        p.stage = next;
+        p.updatedAt = Date.now();
+        if (next === 'reached_out' && !p.reachedOutDate) p.reachedOutDate = todayISO();
+      }
       save();
       renderAll();
     }
@@ -1084,7 +1092,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
 document.querySelector('#revenueForm input[name="date"]').value = todayISO();
 document.querySelector('#expenseForm input[name="date"]').value = todayISO();
-document.querySelector('#prospectForm input[name="date"]').value = todayISO();
 
 renderAll();
 setInterval(checkFollowupNotifications, 60 * 60 * 1000);

@@ -40,12 +40,14 @@ doesn't fetch anything external.)
   That's a starting estimate for your own tracking — some categories (like
   entertainment) may not be fully claimable, so confirm with your
   accountant/bookkeeper before lodging anything.
-- **Sales** — a three-column pipeline: Reached out → Follow-up → Meeting. Any
-  prospect still sitting in "Reached out" after 7 days is flagged in the UI
-  and on the Home banner. Click "Enable follow-up notifications" to also get
-  a browser notification — this only fires while the dashboard tab is open
-  (there's no background server), so it's a nice-to-have on top of the
-  in-app flag, not a replacement for it.
+- **Sales** — a four-column pipeline: Prospects → Reached out → Follow-up →
+  Meeting. New entries start in "Prospects" with just a name and notes;
+  clicking "Move to Reached out" is what stamps the reached-out date and
+  starts the follow-up clock. Any prospect still sitting in "Reached out"
+  after 7 days is flagged in the UI and on the Home banner. Click "Enable
+  follow-up notifications" to also get a browser notification — this only
+  fires while the dashboard tab is open (there's no background server), so
+  it's a nice-to-have on top of the in-app flag, not a replacement for it.
 - **Clients** — each client gets its own mini task board. Tasks added there
   use the same underlying list as the main To-Do tab, so they show up in
   both places automatically; the main To-Do tab can also be filtered to a
