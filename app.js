@@ -612,6 +612,102 @@ function renderIdeas() {
     : '<div class="list__empty">No ideas captured yet.</div>';
 }
 
+/* ---- Agents ---- */
+
+const AGENTS = [
+  { id: 'sales', name: 'Sales', role: 'Outreach, proposals & pipeline', color: 'var(--series-1)' },
+  { id: 'email-campaigns', name: 'Email Campaigns', role: 'Newsletters & lifecycle email', color: 'var(--series-3)' },
+  { id: 'website', name: 'Website', role: 'Site builds & maintenance', color: 'var(--series-7)' },
+  { id: 'analytics', name: 'Analytics', role: 'Ad breakdowns & performance', color: 'var(--series-2)' },
+  { id: 'design', name: 'Design', role: 'Graphic design & brand assets', color: 'var(--warning)' },
+  { id: 'ops-overseer', name: 'Ops Overseer', role: 'Whole-operation view, aligned to business goals', color: 'var(--good)' }
+];
+
+let agentsLog = [];
+let agentsSnapshot = null;
+
+function timeAgo(iso) {
+  const then = new Date(iso).getTime();
+  if (Number.isNaN(then)) return '';
+  const mins = Math.round((Date.now() - then) / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.round(hours / 24);
+  return `${days}d ago`;
+}
+
+function renderAgentCards() {
+  document.getElementById('agentCards').innerHTML = AGENTS.map(a => {
+    const entries = agentsLog.filter(e => e.agent === a.id);
+    const last = entries[0];
+    return `
+      <div class="card agentCard">
+        <div class="agentCard__dot" style="background:${a.color}"></div>
+        <h3>${escapeHtml(a.name)}</h3>
+        <p class="agentCard__role">${escapeHtml(a.role)}</p>
+        ${last
+          ? `<p class="agentCard__last">Last active ${timeAgo(last.timestamp)}<br><span class="task__chip">${escapeHtml(last.summary)}</span></p>`
+          : `<p class="agentCard__last agentCard__last--empty">No activity logged yet.</p>`}
+      </div>`;
+  }).join('');
+}
+
+function renderAgentActivity() {
+  const sorted = agentsLog.slice().sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 40);
+  document.getElementById('agentActivity').innerHTML = sorted.length
+    ? sorted.map(e => {
+        const agent = AGENTS.find(a => a.id === e.agent);
+        return `
+          <div class="task">
+            <span class="task__chip" style="background:${agent ? agent.color : 'var(--baseline)'};color:#fff">${escapeHtml(agent ? agent.name : e.agent)}</span>
+            <span class="task__text">${escapeHtml(e.summary)}</span>
+            <span class="task__chip">${timeAgo(e.timestamp)}</span>
+          </div>`;
+      }).join('')
+    : '<div class="list__empty">No agent activity yet. Once you ask a Thryve agent to do something, it will log its work here.</div>';
+}
+
+function renderAgentsSnapshot() {
+  const el = document.getElementById('agentsSnapshot');
+  if (!agentsSnapshot) {
+    el.innerHTML = '<div class="list__empty">data.json hasn\'t been synced yet.</div>';
+    return;
+  }
+  const s = agentsSnapshot;
+  const stats = [
+    { label: 'Clients tracked', value: (s.clients || []).length },
+    { label: 'Open prospects', value: (s.prospects || []).filter(p => p.stage !== 'meeting').length },
+    { label: 'Open tasks', value: (s.todos || []).filter(t => !t.done).length },
+    { label: 'Revenue entries', value: (s.revenue && s.revenue.entries || []).length }
+  ];
+  el.innerHTML = stats.map(st => `
+    <div class="stat">
+      <div class="stat__label">${st.label}</div>
+      <div class="stat__value">${st.value}</div>
+    </div>
+  `).join('');
+}
+
+async function loadAgentsData() {
+  try {
+    const res = await fetch('./agents-log.json', { cache: 'no-store' });
+    agentsLog = res.ok ? await res.json() : [];
+  } catch (e) {
+    agentsLog = [];
+  }
+  try {
+    const res = await fetch('./data.json', { cache: 'no-store' });
+    agentsSnapshot = res.ok ? await res.json() : null;
+  } catch (e) {
+    agentsSnapshot = null;
+  }
+  renderAgentCards();
+  renderAgentActivity();
+  renderAgentsSnapshot();
+}
+
 /* ---- Key Links ---- */
 
 function renderLinks() {
@@ -1111,4 +1207,5 @@ document.querySelector('#revenueForm input[name="date"]').value = todayISO();
 document.querySelector('#expenseForm input[name="date"]').value = todayISO();
 
 renderAll();
+loadAgentsData();
 setInterval(checkFollowupNotifications, 60 * 60 * 1000);

@@ -222,11 +222,20 @@ button, input, select {
 .grid { display: grid; gap: 16px; margin-bottom: 16px; }
 .grid--two { grid-template-columns: 1fr 1fr; }
 .grid--stats { grid-template-columns: repeat(4, 1fr); }
+.grid--agents { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 760px) {
-  .grid--two, .grid--stats { grid-template-columns: 1fr; }
+  .grid--two, .grid--stats, .grid--agents { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
   .shell { flex-direction: column; }
 }
+
+/* ---------- agent cards ---------- */
+.agentCard { position: relative; padding-top: 20px; margin-bottom: 0; }
+.agentCard__dot { width: 10px; height: 10px; border-radius: 50%; margin-bottom: 10px; }
+.agentCard h3 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+.agentCard__role { margin: 0 0 12px; font-size: 12px; color: var(--text-secondary); }
+.agentCard__last { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+.agentCard__last--empty { font-style: italic; }
 
 /* ---------- stat tiles ---------- */
 .stat {
