@@ -1,11 +1,15 @@
 # Business Dashboard
 
-A personal, local-only dashboard for running the business day to day: to-dos,
-revenue, expenses, a sales pipeline, client boards, ideas, and key links.
+A personal dashboard for running the business day to day: to-dos, revenue,
+expenses, a sales pipeline, client boards, ideas, key links, and an Agents
+tab that monitors Claude agents working on the business.
 
-No server, no account, no build step. Everything is a single static site and
-all data is stored in your browser's `localStorage` — nothing leaves your
-machine.
+No server, no account, no build step. Everything is a single static site.
+Your day-to-day editing lives in your browser's `localStorage`. `data.json`
+and `agents-log.json` are a separate, committed copy of that shape that
+Claude agents read for business context and write updates/activity to — see
+**Agents** below. This repo (and therefore those two files) is public, so
+treat anything you let agents sync there as public information.
 
 ## Running it
 
@@ -62,6 +66,21 @@ doesn't fetch anything external.)
 - **Editing** — every list (To-Do, Revenue, Expenses, Sales, Clients, Ideas,
   Key Links) has a pencil icon next to each entry to edit it in place, not
   just add/remove.
+
+## Agents
+
+The **Agents** tab shows six Claude personas set up for this business — Sales,
+Email Campaigns, Website, Analytics, Design, and an Ops Overseer — each
+invoked on demand (e.g. "sales agent, draft outreach to X"). Their
+definitions live outside this repo, at `~/.claude/agents/thryve-*.md` on
+Kelsey's machine.
+
+When an agent does something worth tracking, it appends an entry to
+`agents-log.json` (`{timestamp, agent, summary}`) and commits/pushes it here,
+which is what the Agents tab's activity feed reads. `data.json` is the
+business-data copy agents read for context (clients, pipeline, revenue,
+todos) — it's seeded empty and gets synced from an export of the live
+dashboard data on request.
 
 ## Backing up your data
 

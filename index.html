@@ -27,6 +27,7 @@
       <button class="nav__item" data-tab="clients">Clients</button>
       <button class="nav__item" data-tab="ideas">Ideas</button>
       <button class="nav__item" data-tab="links">Key Links</button>
+      <button class="nav__item" data-tab="agents">Agents</button>
     </nav>
     <div class="sidebar__footer">
       <button type="button" class="btn btn--ghost btn--small" id="themeToggle" title="Toggle theme">Theme</button>
@@ -298,6 +299,32 @@
 
       <div class="card">
         <div id="linkList" class="list list--links"></div>
+      </div>
+    </section>
+
+    <!-- AGENTS -->
+    <section class="tab" id="tab-agents" data-tab-panel="agents">
+      <header class="pageHead">
+        <h1>Agents</h1>
+        <p class="pageHead__sub">Claude agents working across the business. Each reads live business data and logs what it does here.</p>
+      </header>
+
+      <div class="card" id="agentsSyncCard">
+        <div class="card__head">
+          <h2>Synced business snapshot</h2>
+          <span class="card__hint">From <code>data.json</code> — the copy agents read from</span>
+        </div>
+        <div id="agentsSnapshot" class="grid grid--stats"></div>
+      </div>
+
+      <div class="grid grid--agents" id="agentCards"></div>
+
+      <div class="card">
+        <div class="card__head">
+          <h2>Activity log</h2>
+          <span class="card__hint">Most recent first</span>
+        </div>
+        <div id="agentActivity" class="list"></div>
       </div>
     </section>
   </main>

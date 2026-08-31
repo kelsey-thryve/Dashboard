@@ -1,0 +1,11 @@
+{
+  "todos": [],
+  "clients": [],
+  "revenue": { "goal": 10000, "entries": [] },
+  "expenses": { "goal": 1000, "gstRate": 10, "entries": [] },
+  "prospects": [],
+  "ideas": [],
+  "links": [],
+  "_syncedAt": null,
+  "_syncNote": "This file is the shared copy Thryve agents read for business context and write updates to. It starts empty — export your real data from the dashboard's Data > Export JSON and hand it to an agent to seed it, or ask an agent to sync it for you."
+}
