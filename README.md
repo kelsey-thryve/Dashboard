@@ -28,6 +28,11 @@ doesn't fetch anything external.)
   still open). Check "Repeats weekly" on a task and it automatically resets
   to open every week once you've checked it off, instead of needing to be
   recreated. Tasks can optionally be tied to a client.
+- **Time tracking** — click the clock icon on any to-do to log time against
+  it: hours/minutes, a date, and an optional note on what you did. A task
+  with logged time shows a running total chip; a client's task board totals
+  up all the time logged across their tasks. Since it's attached to to-dos,
+  untie it from a client at any point just by leaving the task unassigned.
 - **Revenue** — set your monthly goal (defaults to $10,000), log income by
   client/source, see a progress meter and a breakdown chart for the current
   month. Tick "Expected" on an entry to log it as a potential incoming rather

@@ -12,13 +12,14 @@ const EXPENSE_CATEGORIES = [
 
 function defaultState() {
   return {
-    todos: [],       // {id, text, done, doneWeek, recurring, clientId, createdAt}
+    todos: [],       // {id, text, done, doneWeek, recurring, clientId, dueDate, createdAt}
     clients: [],      // {id, name, notes, createdAt}
     revenue: { goal: 10000, entries: [] },  // entries: {id, source, amount, date, status: 'actual'|'expected'}
     expenses: { goal: 1000, gstRate: 10, entries: [] },  // entries: {id, name, amount, date, category, includesGst}
     prospects: [],    // {id, name, notes, stage, reachedOutDate, updatedAt, notifiedAt}
     ideas: [],        // {id, text, createdAt}
-    links: []         // {id, label, url}
+    links: [],        // {id, label, url}
+    timeEntries: []   // {id, todoId, minutes, date, note, createdAt}
   };
 }
 
@@ -44,7 +45,10 @@ function save() {
 }
 
 // which single item (by id) is currently showing an inline edit form, per list
-const editing = { todo: null, client: null, revenue: null, expense: null, prospect: null, idea: null, link: null };
+const editing = { todo: null, client: null, revenue: null, expense: null, prospect: null, idea: null, link: null, timeEntry: null };
+
+// which single to-do (by id) currently has its time log panel expanded
+let expandedTimeLog = null;
 
 /* ============================= helpers ============================= */
 
@@ -106,6 +110,28 @@ function gstAmount(entry, rate) {
   return entry.amount * (rate / (100 + rate));
 }
 
+function fmtDuration(minutes) {
+  minutes = Math.round(minutes);
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h && m) return `${h}h ${m}m`;
+  if (h) return `${h}h`;
+  return `${m}m`;
+}
+
+function timeEntriesForTodo(todoId) {
+  return state.timeEntries.filter(e => e.todoId === todoId);
+}
+
+function totalMinutesForTodo(todoId) {
+  return timeEntriesForTodo(todoId).reduce((s, e) => s + e.minutes, 0);
+}
+
+function totalMinutesForClient(clientId) {
+  const todoIds = new Set(state.todos.filter(t => t.clientId === clientId).map(t => t.id));
+  return state.timeEntries.filter(e => todoIds.has(e.todoId)).reduce((s, e) => s + e.minutes, 0);
+}
+
 /* ============================= tabs ============================= */
 
 function goToTab(tab) {
@@ -148,6 +174,8 @@ function toggleTodo(id) {
 
 function removeTodo(id) {
   state.todos = state.todos.filter(t => t.id !== id);
+  state.timeEntries = state.timeEntries.filter(e => e.todoId !== id);
+  if (expandedTimeLog === id) expandedTimeLog = null;
   save();
   renderAll();
 }
@@ -190,15 +218,60 @@ function renderTodoItem(todo, opts) {
   const dueChip = todo.dueDate
     ? `<span class="task__chip ${overdue ? 'task__chip--expected' : ''}">${overdue ? 'Overdue ' : 'Due '}${fmtDate(todo.dueDate)}</span>`
     : '';
+  const totalMin = totalMinutesForTodo(todo.id);
+  const timeChip = totalMin > 0 ? `<span class="task__chip">${fmtDuration(totalMin)}</span>` : '';
+  const logOpen = expandedTimeLog === todo.id;
   return `
     <div class="task" data-id="${todo.id}">
       <input type="checkbox" data-action="toggle-todo" data-id="${todo.id}" ${done ? 'checked' : ''} />
       <span class="task__text ${done ? 'is-done' : ''}">${escapeHtml(todo.text)}</span>
       ${todo.recurring ? '<span class="task__chip task__chip--recurring">Weekly</span>' : ''}
       ${dueChip}
+      ${timeChip}
       ${opts.showClient ? clientChip(todo.clientId) : ''}
+      <button type="button" class="btn--icon ${logOpen ? 'is-active' : ''}" data-action="toggle-timelog" data-id="${todo.id}" title="Log time">⏱</button>
       <button type="button" class="btn--icon" data-action="edit-todo" data-id="${todo.id}" title="Edit">✎</button>
       <button type="button" class="btn--icon" data-action="remove-todo" data-id="${todo.id}" title="Remove">✕</button>
+    </div>
+    ${logOpen ? renderTimeLogPanel(todo) : ''}`;
+}
+
+function renderTimeEntryRow(entry) {
+  if (editing.timeEntry === entry.id) {
+    return `
+      <form class="inline-edit" data-action="save-time-edit" data-id="${entry.id}">
+        <input type="number" name="hours" value="${Math.floor(entry.minutes / 60)}" min="0" step="1" placeholder="h" style="width:56px" data-autofocus />
+        <input type="number" name="minutes" value="${entry.minutes % 60}" min="0" max="59" step="1" placeholder="m" style="width:56px" />
+        <input type="text" name="note" value="${escapeHtml(entry.note || '')}" placeholder="What did you work on?" maxlength="140" />
+        <input type="date" name="date" value="${entry.date}" />
+        <button type="submit" class="btn btn--primary btn--small">Save</button>
+        <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="timeEntry">Cancel</button>
+      </form>`;
+  }
+  return `
+    <div class="timelog__entry">
+      <span class="timelog__date">${fmtDate(entry.date)}</span>
+      <span class="timelog__duration">${fmtDuration(entry.minutes)}</span>
+      <span class="timelog__note">${entry.note ? escapeHtml(entry.note) : ''}</span>
+      <button type="button" class="btn--icon" data-action="edit-time-entry" data-id="${entry.id}" title="Edit">✎</button>
+      <button type="button" class="btn--icon" data-action="remove-time-entry" data-id="${entry.id}" title="Remove">✕</button>
+    </div>`;
+}
+
+function renderTimeLogPanel(todo) {
+  const entries = timeEntriesForTodo(todo.id).sort((a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt);
+  const total = totalMinutesForTodo(todo.id);
+  return `
+    <div class="timelog" data-todo-id="${todo.id}">
+      <div class="timelog__total">${entries.length ? `${fmtDuration(total)} logged on this task` : 'No time logged yet'}</div>
+      ${entries.length ? `<div class="timelog__entries">${entries.map(renderTimeEntryRow).join('')}</div>` : ''}
+      <form class="timelog__form" data-action="add-time-entry" data-todo-id="${todo.id}">
+        <input type="number" name="hours" min="0" step="1" placeholder="h" />
+        <input type="number" name="minutes" min="0" max="59" step="1" placeholder="m" />
+        <input type="text" name="note" placeholder="What did you work on? (optional)" maxlength="140" />
+        <input type="date" name="date" value="${todayISO()}" />
+        <button type="submit" class="btn btn--secondary btn--small">Log time</button>
+      </form>
     </div>`;
 }
 
@@ -562,6 +635,7 @@ function renderClients() {
         (e.status || 'actual') === 'actual' &&
         e.source.trim().toLowerCase() === client.name.trim().toLowerCase())
     );
+    const timeForClient = totalMinutesForClient(client.id);
 
     const headBlock = editing.client === client.id
       ? `<form class="inline-edit" data-action="save-client-edit" data-id="${client.id}" style="flex:1">
@@ -581,6 +655,7 @@ function renderClients() {
         <div class="clientBoard__head">${headBlock}</div>
         ${editing.client !== client.id && client.notes ? `<p class="clientBoard__notes">${escapeHtml(client.notes)}</p>` : ''}
         ${revenueFromClient > 0 ? `<p class="clientBoard__revenue">${fmtMoney(revenueFromClient)} in confirmed revenue all-time</p>` : ''}
+        ${timeForClient > 0 ? `<p class="clientBoard__time">${fmtDuration(timeForClient)} logged all-time</p>` : ''}
         <form class="clientBoard__form" data-action="client-todo-form" data-client-id="${client.id}">
           <input type="text" name="text" placeholder="Add a task for ${escapeHtml(client.name)}…" maxlength="200" required />
           <button type="submit" class="btn btn--secondary">Add</button>
@@ -973,6 +1048,47 @@ document.addEventListener('submit', e => {
     renderAll();
     return;
   }
+
+  if (action === 'add-time-entry') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const totalMinutes = (Number(data.get('hours')) || 0) * 60 + (Number(data.get('minutes')) || 0);
+    if (totalMinutes <= 0) {
+      alert('Enter how long this took (hours and/or minutes).');
+      return;
+    }
+    state.timeEntries.push({
+      id: uid(),
+      todoId: form.dataset.todoId,
+      minutes: totalMinutes,
+      date: data.get('date') || todayISO(),
+      note: (data.get('note') || '').trim(),
+      createdAt: Date.now()
+    });
+    save();
+    renderAll();
+    return;
+  }
+
+  if (action === 'save-time-edit') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const entry = state.timeEntries.find(x => x.id === form.dataset.id);
+    if (entry) {
+      const totalMinutes = (Number(data.get('hours')) || 0) * 60 + (Number(data.get('minutes')) || 0);
+      if (totalMinutes <= 0) {
+        alert('Enter how long this took (hours and/or minutes).');
+        return;
+      }
+      entry.minutes = totalMinutes;
+      entry.note = (data.get('note') || '').trim();
+      entry.date = data.get('date') || entry.date;
+    }
+    editing.timeEntry = null;
+    save();
+    renderAll();
+    return;
+  }
 });
 
 /* ============================= delegated clicks & changes ============================= */
@@ -1017,6 +1133,9 @@ document.addEventListener('click', e => {
   else if (action === 'edit-prospect') { editing.prospect = id; renderAll(); }
   else if (action === 'edit-idea') { editing.idea = id; renderAll(); }
   else if (action === 'edit-link') { editing.link = id; renderAll(); }
+  else if (action === 'toggle-timelog') { expandedTimeLog = expandedTimeLog === id ? null : id; renderAll(); }
+  else if (action === 'edit-time-entry') { editing.timeEntry = id; renderAll(); }
+  else if (action === 'remove-time-entry') { state.timeEntries = state.timeEntries.filter(x => x.id !== id); save(); renderAll(); }
   else if (action === 'cancel-edit') { editing[btn.dataset.kind] = null; renderAll(); }
 });
 
