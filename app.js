@@ -45,7 +45,7 @@ function save() {
 }
 
 // which single item (by id) is currently showing an inline edit form, per list
-const editing = { todo: null, client: null, revenue: null, expense: null, prospect: null, idea: null, link: null, timeEntry: null };
+const editing = { todo: null, client: null, revenue: null, expense: null, prospect: null, idea: null, link: null, timeEntry: null, clientContext: null };
 
 // which single to-do (by id) currently has its time log panel expanded
 let expandedTimeLog = null;
@@ -656,6 +656,8 @@ function renderClients() {
         ${editing.client !== client.id && client.notes ? `<p class="clientBoard__notes">${escapeHtml(client.notes)}</p>` : ''}
         ${revenueFromClient > 0 ? `<p class="clientBoard__revenue">${fmtMoney(revenueFromClient)} in confirmed revenue all-time</p>` : ''}
         ${timeForClient > 0 ? `<p class="clientBoard__time">${fmtDuration(timeForClient)} logged all-time</p>` : ''}
+        ${renderClientContext(client)}
+        ${renderClientDocs(client)}
         <form class="clientBoard__form" data-action="client-todo-form" data-client-id="${client.id}">
           <input type="text" name="text" placeholder="Add a task for ${escapeHtml(client.name)}…" maxlength="200" required />
           <button type="submit" class="btn btn--secondary">Add</button>
@@ -666,6 +668,137 @@ function renderClients() {
       </div>
     `;
   }).join('');
+}
+
+function renderClientContext(client) {
+  if (editing.clientContext === client.id) {
+    return `
+      <form class="inline-edit" data-action="save-client-context" data-id="${client.id}" style="align-items:flex-start">
+        <textarea name="context" rows="6" placeholder="Paste everything this client needs — brand voice, goals, deliverables, links, constraints…" data-autofocus>${escapeHtml(client.context || '')}</textarea>
+        <div style="display:flex;gap:8px">
+          <button type="submit" class="btn btn--primary btn--small">Save</button>
+          <button type="button" class="btn btn--ghost btn--small" data-action="cancel-edit" data-kind="clientContext">Cancel</button>
+        </div>
+      </form>`;
+  }
+  if (client.context) {
+    return `
+      <div class="clientBoard__context">
+        <div class="clientBoard__sectionHead">
+          <span>Context for agents</span>
+          <button type="button" class="btn--icon" data-action="edit-client-context" data-id="${client.id}" title="Edit context">✎</button>
+        </div>
+        <p>${escapeHtml(client.context)}</p>
+      </div>`;
+  }
+  return `<button type="button" class="btn btn--ghost btn--small" data-action="edit-client-context" data-id="${client.id}">+ Add context for agents</button>`;
+}
+
+/* ---- Client documents (stored in IndexedDB, not synced to agents) ---- */
+
+const FILES_DB_NAME = 'bizdash_files';
+const FILES_STORE = 'files';
+let filesDbPromise = null;
+let clientFiles = {}; // clientId -> [{id, clientId, name, type, size, addedAt}] (metadata only — blobs stay in IndexedDB)
+
+function openFilesDb() {
+  if (filesDbPromise) return filesDbPromise;
+  filesDbPromise = new Promise((resolve, reject) => {
+    const req = indexedDB.open(FILES_DB_NAME, 1);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(FILES_STORE)) {
+        const store = db.createObjectStore(FILES_STORE, { keyPath: 'id' });
+        store.createIndex('clientId', 'clientId', { unique: false });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+  return filesDbPromise;
+}
+
+async function idbPut(record) {
+  const db = await openFilesDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(FILES_STORE, 'readwrite');
+    tx.objectStore(FILES_STORE).put(record);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function idbDelete(id) {
+  const db = await openFilesDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(FILES_STORE, 'readwrite');
+    tx.objectStore(FILES_STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function idbGetAll() {
+  const db = await openFilesDb();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(FILES_STORE, 'readonly').objectStore(FILES_STORE).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbGet(id) {
+  const db = await openFilesDb();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(FILES_STORE, 'readonly').objectStore(FILES_STORE).get(id);
+    req.onsuccess = () => resolve(req.result || null);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function loadClientFiles() {
+  try {
+    const all = await idbGetAll();
+    const grouped = {};
+    all.forEach(rec => {
+      (grouped[rec.clientId] = grouped[rec.clientId] || []).push({
+        id: rec.id, clientId: rec.clientId, name: rec.name, type: rec.type, size: rec.size, addedAt: rec.addedAt
+      });
+    });
+    clientFiles = grouped;
+  } catch (e) {
+    console.error('Could not load client documents', e);
+    clientFiles = {};
+  }
+  renderClients();
+}
+
+function fmtFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function renderClientDocs(client) {
+  const files = (clientFiles[client.id] || []).slice().sort((a, b) => b.addedAt - a.addedAt);
+  return `
+    <div class="clientBoard__docs">
+      <div class="clientBoard__sectionHead">
+        <span>Documents</span>
+        <label class="btn btn--ghost btn--small">+ Upload
+          <input type="file" multiple data-action="upload-doc" data-client-id="${client.id}" hidden />
+        </label>
+      </div>
+      ${files.length
+        ? `<div class="docList">${files.map(f => `
+            <div class="docRow" data-id="${f.id}">
+              <span class="docRow__name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</span>
+              <span class="docRow__size">${fmtFileSize(f.size)}</span>
+              <button type="button" class="btn--icon" data-action="download-doc" data-id="${f.id}" title="Download">⬇</button>
+              <button type="button" class="btn--icon" data-action="remove-doc" data-id="${f.id}" title="Remove">✕</button>
+            </div>`).join('')}</div>`
+        : '<div class="list__empty">No documents yet — onboarding forms, briefs, contracts…</div>'}
+    </div>`;
 }
 
 /* ---- Ideas ---- */
@@ -1070,6 +1203,17 @@ document.addEventListener('submit', e => {
     return;
   }
 
+  if (action === 'save-client-context') {
+    e.preventDefault();
+    const data = new FormData(form);
+    const client = state.clients.find(c => c.id === form.dataset.id);
+    if (client) client.context = data.get('context').trim();
+    editing.clientContext = null;
+    save();
+    renderAll();
+    return;
+  }
+
   if (action === 'save-revenue-edit') {
     e.preventDefault();
     const data = new FormData(form);
@@ -1201,9 +1345,12 @@ document.addEventListener('click', e => {
   else if (action === 'remove-idea') { state.ideas = state.ideas.filter(x => x.id !== id); save(); renderAll(); }
   else if (action === 'remove-link') { state.links = state.links.filter(x => x.id !== id); save(); renderAll(); }
   else if (action === 'remove-client') {
-    if (confirm('Remove this client? Their tasks will become unassigned, not deleted.')) {
+    if (confirm('Remove this client? Their tasks will become unassigned, not deleted. Any uploaded documents for this client will be deleted.')) {
       state.clients = state.clients.filter(x => x.id !== id);
       state.todos.forEach(t => { if (t.clientId === id) t.clientId = null; });
+      const filesToDelete = clientFiles[id] || [];
+      delete clientFiles[id];
+      filesToDelete.forEach(f => idbDelete(f.id));
       save();
       renderAll();
     }
@@ -1232,6 +1379,26 @@ document.addEventListener('click', e => {
   else if (action === 'toggle-timelog') { expandedTimeLog = expandedTimeLog === id ? null : id; renderAll(); }
   else if (action === 'edit-time-entry') { editing.timeEntry = id; renderAll(); }
   else if (action === 'remove-time-entry') { state.timeEntries = state.timeEntries.filter(x => x.id !== id); save(); renderAll(); }
+  else if (action === 'edit-client-context') { editing.clientContext = id; renderAll(); }
+  else if (action === 'download-doc') {
+    idbGet(id).then(rec => {
+      if (!rec) return;
+      const url = URL.createObjectURL(rec.blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = rec.name;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+  else if (action === 'remove-doc') {
+    if (confirm('Remove this document? This cannot be undone.')) {
+      Object.keys(clientFiles).forEach(cid => {
+        clientFiles[cid] = clientFiles[cid].filter(f => f.id !== id);
+      });
+      idbDelete(id).then(renderClients);
+    }
+  }
   else if (action === 'cancel-edit') { editing[btn.dataset.kind] = null; renderAll(); }
 });
 
@@ -1245,6 +1412,16 @@ document.addEventListener('change', e => {
       save();
       renderAll();
     }
+  } else if (e.target.matches('[data-action="upload-doc"]')) {
+    const clientId = e.target.dataset.clientId;
+    const files = Array.from(e.target.files || []);
+    e.target.value = '';
+    Promise.all(files.map(async file => {
+      const id = uid();
+      const addedAt = Date.now();
+      await idbPut({ id, clientId, name: file.name, type: file.type, size: file.size, addedAt, blob: file });
+      (clientFiles[clientId] = clientFiles[clientId] || []).push({ id, clientId, name: file.name, type: file.type, size: file.size, addedAt });
+    })).then(renderClients);
   }
 });
 
@@ -1327,4 +1504,8 @@ document.querySelector('#expenseForm input[name="date"]').value = todayISO();
 
 renderAll();
 loadAgentsData();
+loadClientFiles();
+if (navigator.storage && navigator.storage.persist) {
+  navigator.storage.persist().catch(() => {});
+}
 setInterval(checkFollowupNotifications, 60 * 60 * 1000);

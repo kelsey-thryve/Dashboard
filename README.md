@@ -60,7 +60,23 @@ doesn't fetch anything external.)
 - **Clients** — each client gets its own mini task board. Tasks added there
   use the same underlying list as the main To-Do tab, so they show up in
   both places automatically; the main To-Do tab can also be filtered to a
-  single client.
+  single client. Two more things live on each client's board:
+  - **Context for agents** — a free-text brief (brand voice, goals,
+    deliverables, constraints, links…), separate from the short one-line
+    notes next to the client's name. This is plain text, so it flows through
+    the same export/sync path as the rest of your data into `data.json` —
+    which means it's readable by the Thryve agents, **and** since this repo
+    is public, it's public. Don't put anything in it you wouldn't want
+    visible to anyone with the repo link.
+  - **Documents** — upload onboarding forms, briefs, contracts, whatever a
+    client needs on file. These are stored locally in the browser's
+    IndexedDB, not in `localStorage` (files are too big for that) and not in
+    the git repo — so they're private to this browser/device, survive a
+    reload, but **are not exported in the Data → Export JSON backup and are
+    not visible to any agent.** There's no path in this app for getting a
+    file's contents to a remote Claude session; if an agent needs to see
+    what's in a document, share it with that agent directly in its own chat,
+    or paste the relevant details into that client's Context field instead.
 - **Ideas** — a running scratch list.
 - **Key Links** — frequently used sites, one click away.
 - **Editing** — every list (To-Do, Revenue, Expenses, Sales, Clients, Ideas,
