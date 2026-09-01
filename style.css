@@ -179,6 +179,12 @@ button, input, select {
 .pageHead h1 { margin: 0 0 4px; font-size: 24px; }
 .pageHead__sub { margin: 0; color: var(--text-secondary); font-size: 14px; }
 
+/* ---------- month navigation ---------- */
+.monthNav { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+.card__head .monthNav { margin-bottom: 0; }
+.monthNav__label { margin: 0; font-size: 14px; font-weight: 600; min-width: 130px; text-align: center; }
+.monthNav .btn--icon { font-size: 15px; }
+
 /* ---------- banner ---------- */
 .banner {
   display: flex;
@@ -307,6 +313,7 @@ select#todoFilter, .select--small {
 .btn--ghost:hover { background: var(--surface-3); }
 .btn--danger { background: var(--critical-bg); color: var(--critical-text); }
 .btn--small { padding: 6px 10px; font-size: 12px; }
+.btn:disabled { opacity: .45; cursor: default; pointer-events: none; }
 .btn--icon {
   background: none;
   border: none;

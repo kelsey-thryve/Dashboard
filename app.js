@@ -50,6 +50,9 @@ const editing = { todo: null, client: null, revenue: null, expense: null, prospe
 // which single to-do (by id) currently has its time log panel expanded
 let expandedTimeLog = null;
 
+// the month (YYYY-MM) Home/Revenue/Expenses are currently showing — resets to the real current month on reload
+let viewedMonth = currentMonthKey();
+
 /* ============================= helpers ============================= */
 
 function uid() {
@@ -96,9 +99,15 @@ function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function monthLabel(dateStr) {
-  const d = dateStr ? new Date(dateStr + 'T00:00:00') : new Date();
-  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+function monthKeyLabel(monthKey) {
+  const [y, m] = monthKey.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+function shiftMonthKey(monthKey, delta) {
+  const [y, m] = monthKey.split('-').map(Number);
+  const d = new Date(y, m - 1 + delta, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
 function categoryOptions(selected) {
@@ -355,9 +364,8 @@ function groupSum(entries, key, fallback) {
   return [...map.entries()].map(([label, value]) => ({ label, value }));
 }
 
-function entriesForCurrentMonth(entries) {
-  const mk = currentMonthKey();
-  return entries.filter(e => currentMonthKey(e.date) === mk);
+function entriesForMonth(entries, monthKey) {
+  return entries.filter(e => currentMonthKey(e.date) === monthKey);
 }
 
 function sumAmount(entries) {
@@ -369,21 +377,22 @@ function sumAmount(entries) {
 function renderHome() {
   document.getElementById('todayLabel').textContent =
     new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  document.getElementById('homeMonthLabel').textContent = monthKeyLabel(viewedMonth);
 
-  const revMonth = entriesForCurrentMonth(state.revenue.entries);
+  const revMonth = entriesForMonth(state.revenue.entries, viewedMonth);
   const revActual = revMonth.filter(e => (e.status || 'actual') === 'actual');
   const revExpected = revMonth.filter(e => (e.status || 'actual') === 'expected');
   const revTotal = sumAmount(revActual);
   const revExpectedTotal = sumAmount(revExpected);
-  const expMonth = entriesForCurrentMonth(state.expenses.entries);
+  const expMonth = entriesForMonth(state.expenses.entries, viewedMonth);
   const expTotal = sumAmount(expMonth);
 
   const openTodos = state.todos.filter(t => !isTodoDone(t));
   const overdueProspects = state.prospects.filter(p => p.stage === 'reached_out' && daysSince(p.reachedOutDate) >= 7);
 
   const stats = [
-    { label: 'Revenue this month', value: fmtMoney(revTotal), delta: `${Math.round(state.revenue.goal > 0 ? (revTotal / state.revenue.goal) * 100 : 0)}% of goal` },
-    { label: 'Expenses this month', value: fmtMoney(expTotal), delta: expTotal > state.expenses.goal ? 'Over budget' : `${fmtMoney(state.expenses.goal - expTotal)} left`, bad: expTotal > state.expenses.goal },
+    { label: 'Revenue', value: fmtMoney(revTotal), delta: `${Math.round(state.revenue.goal > 0 ? (revTotal / state.revenue.goal) * 100 : 0)}% of goal` },
+    { label: 'Expenses', value: fmtMoney(expTotal), delta: expTotal > state.expenses.goal ? 'Over budget' : `${fmtMoney(state.expenses.goal - expTotal)} left`, bad: expTotal > state.expenses.goal },
     { label: 'Open tasks', value: openTodos.length, delta: `${state.todos.filter(t => t.recurring).length} recurring` },
     { label: 'Needs follow-up', value: overdueProspects.length, delta: `${state.prospects.length} total prospects`, bad: overdueProspects.length > 0 }
   ];
@@ -483,9 +492,9 @@ function renderRevenueEntryRow(entry) {
 
 function renderRevenue() {
   document.getElementById('revenueGoal').value = state.revenue.goal;
-  document.getElementById('revenueMonthLabel').textContent = `This month — ${monthLabel()}`;
+  document.getElementById('revenueMonthLabel').textContent = monthKeyLabel(viewedMonth);
 
-  const month = entriesForCurrentMonth(state.revenue.entries);
+  const month = entriesForMonth(state.revenue.entries, viewedMonth);
   const actualMonth = month.filter(e => (e.status || 'actual') === 'actual');
   const expectedMonth = month.filter(e => (e.status || 'actual') === 'expected');
   const actualTotal = sumAmount(actualMonth);
@@ -501,7 +510,7 @@ function renderRevenue() {
   document.getElementById('potentialIncomings').innerHTML = potential.length
     ? potential.map(renderRevenueEntryRow).join('') +
       `<div class="entry-row" style="border-bottom:none"><span class="entry-row__name" style="font-weight:600">Total potential</span><span class="entry-row__amount">${fmtMoney(expectedTotal)}</span></div>`
-    : '<div class="list__empty">Nothing expected right now — add income below and tick "Expected".</div>';
+    : '<div class="list__empty">Nothing expected for this month — add income below and tick "Expected".</div>';
 
   const all = state.revenue.entries.slice().sort((a, b) => b.date.localeCompare(a.date) || b.createdAt - a.createdAt);
   document.getElementById('revenueEntries').innerHTML = all.length
@@ -544,10 +553,10 @@ function renderExpenseEntryRow(entry) {
 function renderExpenses() {
   document.getElementById('expenseGoal').value = state.expenses.goal;
   document.getElementById('gstRate').value = state.expenses.gstRate;
-  document.getElementById('expenseMonthLabel').textContent = `This month — ${monthLabel()}`;
+  document.getElementById('expenseMonthLabel').textContent = monthKeyLabel(viewedMonth);
   populateCategorySelect();
 
-  const month = entriesForCurrentMonth(state.expenses.entries);
+  const month = entriesForMonth(state.expenses.entries, viewedMonth);
   renderMeter(document.getElementById('expenseMeter'), { value: sumAmount(month), goal: state.expenses.goal, kind: 'expense' });
 
   const rate = state.expenses.gstRate;
@@ -555,8 +564,8 @@ function renderExpenses() {
   const gstEl = document.getElementById('expenseGstStat');
   gstEl.classList.toggle('is-good', gstTotal > 0);
   gstEl.textContent = gstTotal > 0
-    ? `GST reclaimable this month: ${fmtMoney(gstTotal)} (at ${rate}%)`
-    : 'No GST-inclusive expenses logged this month yet.';
+    ? `GST reclaimable: ${fmtMoney(gstTotal)} (at ${rate}%)`
+    : 'No GST-inclusive expenses logged for this month.';
 
   renderBars(document.getElementById('expenseBars'), groupSum(month, 'category', 'Other'), 'expense');
 
@@ -949,6 +958,9 @@ function renderAll() {
   renderClients();
   renderIdeas();
   renderLinks();
+
+  const isCurrentMonth = viewedMonth === currentMonthKey();
+  document.querySelectorAll('[data-action="month-today"]').forEach(btn => { btn.disabled = isCurrentMonth; });
 
   const autofocus = document.querySelector('[data-autofocus]');
   if (autofocus) autofocus.focus();
@@ -1400,6 +1412,9 @@ document.addEventListener('click', e => {
     }
   }
   else if (action === 'cancel-edit') { editing[btn.dataset.kind] = null; renderAll(); }
+  else if (action === 'month-prev') { viewedMonth = shiftMonthKey(viewedMonth, -1); renderAll(); }
+  else if (action === 'month-next') { viewedMonth = shiftMonthKey(viewedMonth, 1); renderAll(); }
+  else if (action === 'month-today') { viewedMonth = currentMonthKey(); renderAll(); }
 });
 
 document.addEventListener('change', e => {

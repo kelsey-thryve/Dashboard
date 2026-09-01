@@ -26,7 +26,11 @@ doesn't fetch anything external.)
 ## What's inside
 
 - **Home** — the day at a glance: revenue/expense progress, open tasks,
-  prospects waiting on a follow-up.
+  prospects waiting on a follow-up. The revenue/expense portion has a month
+  switcher (‹ August 2026 › · Today) shared with the Revenue and Expenses
+  tabs — step back to review any past month, everywhere it appears at once.
+  Open tasks and follow-ups are always current, regardless of the month
+  you're viewing.
 - **To-Do** — add and remove tasks, with an optional due date (editable any
   time via the pencil icon — it turns red once it's passed and the task is
   still open). Check "Repeats weekly" on a task and it automatically resets
