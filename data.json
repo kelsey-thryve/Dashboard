@@ -1,11 +1,672 @@
 {
-  "todos": [],
-  "clients": [],
-  "revenue": { "goal": 10000, "entries": [] },
-  "expenses": { "goal": 1000, "gstRate": 10, "entries": [] },
-  "prospects": [],
+  "todos": [
+    {
+      "id": "restored2000",
+      "text": "Get a loom video sent over to Mark - Simply good foods",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520360275
+    },
+    {
+      "id": "restored2001",
+      "text": "Bryan strategy loom",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1002",
+      "dueDate": null,
+      "createdAt": 1787520359275
+    },
+    {
+      "id": "restored2002",
+      "text": "Get quote for Divotworks editing",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1001",
+      "dueDate": null,
+      "createdAt": 1787520358275
+    },
+    {
+      "id": "restored2003",
+      "text": "Trainer launch auto connect - ken",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520357275
+    },
+    {
+      "id": "restored2004",
+      "text": "instagram saved videos - get higsfield - video editor - set up agents",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520356275
+    },
+    {
+      "id": "restored2005",
+      "text": "linkedin post",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520355275
+    },
+    {
+      "id": "restored2006",
+      "text": "get thryve ads going",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520354275
+    },
+    {
+      "id": "restored2007",
+      "text": "reach out to all instagram dm's",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520353275
+    },
+    {
+      "id": "restored2008",
+      "text": "follow up with zac",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520352275
+    },
+    {
+      "id": "restored2009",
+      "text": "Bryan page edits - two pages one striped down with just the checkout page. The second one with more similar styling as the homepage",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1002",
+      "dueDate": null,
+      "createdAt": 1787520351275
+    },
+    {
+      "id": "restored2010",
+      "text": "Start naming the divot works files",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1001",
+      "dueDate": null,
+      "createdAt": 1787520350275
+    },
+    {
+      "id": "restored2011",
+      "text": "Get content from Jordy",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520349275
+    },
+    {
+      "id": "restored2012",
+      "text": "Otta brighter shoot ideas",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520348275
+    },
+    {
+      "id": "restored2013",
+      "text": "reach out to luxury golf nz dude - linkedin",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520347275
+    },
+    {
+      "id": "restored2014",
+      "text": "pocket smith email",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520346275
+    },
+    {
+      "id": "restored2015",
+      "text": "reply to mike",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520345275
+    },
+    {
+      "id": "restored2016",
+      "text": "communicate with andrew and jordy about shoot",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520344275
+    },
+    {
+      "id": "restored2017",
+      "text": "call wainui to confirm about shoot",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520343275
+    },
+    {
+      "id": "restored2018",
+      "text": "finish divot works graphics",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520342275
+    },
+    {
+      "id": "restored2019",
+      "text": "load all breanne emails in",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520341275
+    },
+    {
+      "id": "restored2020",
+      "text": "breanne #3 email",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787520340275
+    },
+    {
+      "id": "mt6ceqvzs9x6pn",
+      "text": "head of growth pocket smith reach out",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787521938335
+    },
+    {
+      "id": "mt6n4yrhwpt8x2",
+      "text": "Plumbline meeting - BumpDigital",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": null,
+      "dueDate": null,
+      "createdAt": 1787539957757
+    },
+    {
+      "id": "mt6n6gaunr5qgw",
+      "text": "meeting",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "mt6n57vqx6h3id",
+      "dueDate": null,
+      "createdAt": 1787540027142
+    },
+    {
+      "id": "mt9b8bpq1whsc3",
+      "text": "bryan website updates - send out update at 1pm",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1002",
+      "dueDate": null,
+      "createdAt": 1787701357646
+    },
+    {
+      "id": "mt9b9ejr9wb6i8",
+      "text": "Breanne value email",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "restored1000",
+      "dueDate": null,
+      "createdAt": 1787701407976
+    },
+    {
+      "id": "mt9c7zgf662yfh",
+      "text": "Roof buddy strategy",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "mt6n57vqx6h3id",
+      "dueDate": null,
+      "createdAt": 1787703021375
+    },
+    {
+      "id": "mtaz5sn8agfyoe",
+      "text": "create a linkedin business manager so i can be added to the plumbline one",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "mt6n57vqx6h3id",
+      "dueDate": null,
+      "createdAt": 1787802016580
+    },
+    {
+      "id": "mtaz60f15fkzny",
+      "text": "Roofing company graphics",
+      "done": true,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "mt6n57vqx6h3id",
+      "dueDate": null,
+      "createdAt": 1787802026653
+    },
+    {
+      "id": "mtglwzn2mx6pzl",
+      "text": "Plumbline ads",
+      "done": false,
+      "doneWeek": null,
+      "recurring": false,
+      "clientId": "mt6n57vqx6h3id",
+      "dueDate": null,
+      "createdAt": 1788142567790
+    }
+  ],
+  "clients": [
+    {
+      "id": "restored1000",
+      "name": "Breanne Freeman",
+      "notes": "",
+      "createdAt": 1787520360275
+    },
+    {
+      "id": "restored1001",
+      "name": "DivotWorks",
+      "notes": "",
+      "createdAt": 1787520360274
+    },
+    {
+      "id": "restored1002",
+      "name": "Bryan Renshaw",
+      "notes": "",
+      "createdAt": 1787520360273
+    },
+    {
+      "id": "mt6n57vqx6h3id",
+      "name": "Bump Digital",
+      "notes": "",
+      "createdAt": 1787539969574,
+      "context": "This is an agency that work with. I do the meta ads for a variety of clients - the main one is plumbline at the moment. Here's all the relevent marketing branding, plans, etc so far."
+    }
+  ],
+  "revenue": {
+    "goal": 10000,
+    "entries": [
+      {
+        "id": "restored3000",
+        "source": "Divotworks",
+        "amount": 1552,
+        "date": "2026-08-23",
+        "status": "actual",
+        "createdAt": 1787520360275
+      },
+      {
+        "id": "restored3001",
+        "source": "Bryan Renshaw",
+        "amount": 976,
+        "date": "2026-08-17",
+        "status": "actual",
+        "createdAt": 1787520359275
+      },
+      {
+        "id": "restored3002",
+        "source": "Breanne Freeman",
+        "amount": 2384,
+        "date": "2026-08-14",
+        "status": "actual",
+        "createdAt": 1787520358275
+      },
+      {
+        "id": "mt6bmaxdn4khy5",
+        "source": "Divotworks",
+        "amount": 1552,
+        "date": "2026-08-30",
+        "status": "expected",
+        "createdAt": 1787520611281
+      },
+      {
+        "id": "mt6bn62a2g1b1j",
+        "source": "Bump Digital",
+        "amount": 1300,
+        "date": "2026-09-20",
+        "status": "expected",
+        "createdAt": 1787520651634
+      },
+      {
+        "id": "mtc8ptozfzlvc4",
+        "source": "Bump Digital",
+        "amount": 287.5,
+        "date": "2026-08-28",
+        "status": "actual",
+        "createdAt": 1787878533779
+      }
+    ]
+  },
+  "expenses": {
+    "goal": 1000,
+    "gstRate": 10,
+    "entries": [
+      {
+        "id": "restored4000",
+        "name": "Google workspace",
+        "amount": 88.12,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520360275
+      },
+      {
+        "id": "restored4001",
+        "name": "BP Connect -",
+        "amount": 12.5,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520359275
+      },
+      {
+        "id": "restored4002",
+        "name": "Claude",
+        "amount": 40,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520358275
+      },
+      {
+        "id": "restored4003",
+        "name": "netlify",
+        "amount": 15.67,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520357275
+      },
+      {
+        "id": "restored4004",
+        "name": "takapuna surf club",
+        "amount": 91.8,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520356275
+      },
+      {
+        "id": "restored4005",
+        "name": "remuera golf club",
+        "amount": 25.6,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520355275
+      },
+      {
+        "id": "restored4006",
+        "name": "hotel ponsonby",
+        "amount": 30.38,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520354275
+      },
+      {
+        "id": "restored4007",
+        "name": "akarana golf club",
+        "amount": 80,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520353275
+      },
+      {
+        "id": "restored4008",
+        "name": "KonvertKit",
+        "amount": 85.51,
+        "date": "2026-08-23",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520352275
+      },
+      {
+        "id": "restored4009",
+        "name": "Jordy - KinoHouse",
+        "amount": 920,
+        "date": "2026-08-11",
+        "category": "Other",
+        "includesGst": false,
+        "createdAt": 1787520351275
+      }
+    ]
+  },
+  "prospects": [
+    {
+      "id": "restored5000",
+      "name": "Coached By Doll - Dolly",
+      "notes": "dollyladds@hotmail.com - Breanne",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787797592996,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5001",
+      "name": "Alexa Clark",
+      "notes": "contact@alexia-clark.com - need better email",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787797641637,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5002",
+      "name": "Jessica Tara",
+      "notes": "jesstarafit@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787799380064,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5003",
+      "name": "Xiomara Gill",
+      "notes": "xiomaragill@dulcedo.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787799663135,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5004",
+      "name": "Built By Linds - Lindsay Burt",
+      "notes": "pr@builtbylinds.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787799957340,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5005",
+      "name": "Evolve You",
+      "notes": "info@krissycela.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787800339591,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5006",
+      "name": "Chana Mai",
+      "notes": "chanamaifit@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787800098394,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5007",
+      "name": "Jorry Fit",
+      "notes": "Jorry@jorryfitt.com - DTC & online fitness",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787800338674,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5008",
+      "name": "naturallystefanie",
+      "notes": "simon@wmgmt.co.uk / Bymoirstefanie@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-17",
+      "updatedAt": 1787800498343,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5009",
+      "name": "Hayley Madigen",
+      "notes": "hayleymadiganfitness@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787800630752,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5010",
+      "name": "Josh Taylor Coaching",
+      "notes": "josh@joshtaylorpt.com / High-ticket / website",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787800830823,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5011",
+      "name": "Presley Morris",
+      "notes": "Tikeya@stride-social.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787801044552,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5013",
+      "name": "Kelly Stone Fitness",
+      "notes": "kellynstone35@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787801170351,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5014",
+      "name": "mikaylamailhes",
+      "notes": "mikmailhesfit@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787801237426,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5015",
+      "name": "Finlay Joyce-Noorlander",
+      "notes": "contact@finlaynoorlander.com / support@nieuwcoaching.com.au",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-18",
+      "updatedAt": 1787801378045,
+      "notifiedAt": null
+    },
+    {
+      "id": "restored5016",
+      "name": "Brooke Gentile",
+      "notes": "fitwithbrooke43@gmail.com",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-08-19",
+      "updatedAt": 1787801470685,
+      "notifiedAt": null
+    }
+  ],
   "ideas": [],
   "links": [],
-  "_syncedAt": null,
-  "_syncNote": "This file is the shared copy Thryve agents read for business context and write updates to. It starts empty — export your real data from the dashboard's Data > Export JSON and hand it to an agent to seed it, or ask an agent to sync it for you."
+  "timeEntries": [
+    {
+      "id": "mtglx7b9ojpncy",
+      "todoId": "mtglwzn2mx6pzl",
+      "minutes": 60,
+      "date": "2026-08-31",
+      "note": "Meeting",
+      "createdAt": 1788142577733
+    },
+    {
+      "id": "mtglxdsmypis3r",
+      "todoId": "mtglwzn2mx6pzl",
+      "minutes": 60,
+      "date": "2026-08-25",
+      "note": "Meeting",
+      "createdAt": 1788142586134
+    },
+    {
+      "id": "mtgmjfx9gsko7g",
+      "todoId": "mtaz60f15fkzny",
+      "minutes": 60,
+      "date": "2026-08-31",
+      "note": "Competitor ad research",
+      "createdAt": 1788143615325
+    },
+    {
+      "id": "mthqpy1mzg0gwx",
+      "todoId": "mtaz60f15fkzny",
+      "minutes": 120,
+      "date": "2026-08-31",
+      "note": "Ad graphics",
+      "createdAt": 1788211103386
+    },
+    {
+      "id": "mthqqauatslmj0",
+      "todoId": "mtaz60f15fkzny",
+      "minutes": 60,
+      "date": "2026-08-31",
+      "note": "Ad graphics",
+      "createdAt": 1788211119970
+    }
+  ],
+  "_syncedAt": "2026-09-01T00:00:00Z",
+  "_syncNote": "This file is the shared copy Thryve agents read for business context and write updates to. Seeded from Kelsey's dashboard export on 2026-09-01."
 }
