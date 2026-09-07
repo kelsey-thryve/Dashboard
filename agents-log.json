@@ -13,5 +13,10 @@
     "agent": "email-campaigns",
     "timestamp": "2026-09-04T00:00:00Z",
     "summary": "Drafted a 2-email Labor Day sale flow for Breanne Freeman/BFit: 15% off the Nutrition + Training plan only (explicitly excludes training-only and nutrition-only), on-brand per her Brand Dashboard doc. Delivered as .docx for review."
+  },
+  {
+    "agent": "ops-overseer",
+    "timestamp": "2026-09-07T00:00:00Z",
+    "summary": "Kelsey shared Bump Digital onboarding brief, Bump Digital's Plumbline Meta/LinkedIn proposal, and Plumbline's FY27 marketing plans (Overall + AU) directly in chat. Folded a full summary into Bump Digital's client Context field in data.json (agency contact, Plumbline brand/competitors, current vs proposed Meta spend, LinkedIn launch plan, management hours, FY27 media budget). Also added _docsNote (client Documents live in browser IndexedDB only, never in this export — ask Kelsey to paste into Context or share in chat) and _driveNote (agents are welcome to check Kelsey's shared Google Drive folder 'Thryve Growth' for more context) as standing reminders in data.json for the whole team."
   }
 ]
