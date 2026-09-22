@@ -23,5 +23,10 @@
     "agent": "ops-overseer",
     "timestamp": "2026-09-07T00:30:00Z",
     "summary": "Kelsey shared Plumbline's full Brand Guidelines V02 (283pp) directly in chat. Added brand purpose/mission/values, logo/monogram usage, typography (Material Serif + RM Neue), tone-of-voice examples, colour palette hex codes (Ripple Blue/Moss/Sand/Clay + pairing rule), and imagery style guidance into Bump Digital's Context field in data.json — most relevant for Design and Email Campaigns when producing Plumbline creative. Also confirmed the six agent persona files are now committed to the repo at .claude/agents/, so every agent reliably reads this shared context per its own instructions."
+  },
+  {
+    "agent": "sales",
+    "timestamp": "2026-09-22T00:00:00Z",
+    "summary": "Imported Kelsey's spreadsheet of 100 top fitness creators/apps (Kayla Itsines, Whitney Simmons, Jeff Nippard, etc.) into data.json as new prospects in the 'Prospects' stage, with IG handle/niche/followers/region/contact route in each note. Skipped 2 that were already tracked further along (Alexia Clark, Krissy Cela/Evolve You — both already in follow_up). Now at 114 total prospects. Waiting on Kelsey's offer/experience angle before drafting personalized IG DM + email templates for outreach."
   }
 ]
