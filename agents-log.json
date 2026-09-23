@@ -43,5 +43,10 @@
     "timestamp": "2026-09-23T23:15:00Z",
     "agent": "email-campaigns",
     "summary": "Drafted an end-of-challenge two-email sequence for a client fitness challenge, adapted from a prior challenge template with updated dates and prize structure, saved as a new Google Doc for review."
+  },
+  {
+    "timestamp": "2026-09-23T23:30:00Z",
+    "agent": "ops-overseer",
+    "summary": "Kelsey set a new house style rule: never use em dashes in documents/emails/ad copy going forward, use hyphens instead. Added as a standing _styleNote in data.json for all agents to follow, and flagged it to the email-campaigns agent currently revising the October challenge email doc."
   }
 ]
