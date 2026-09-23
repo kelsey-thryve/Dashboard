@@ -53,5 +53,10 @@
     "timestamp": "2026-09-23T23:35:00Z",
     "agent": "email-campaigns",
     "summary": "Revised the fall challenge email draft per client feedback: confirmed a pre-reg discount code, expanded one email into a full explainer of the new leaderboard/points feature, and applied the new no-em-dash house style. Also corrected the send dates and swapped the feedback-form link in a client's end-of-challenge email draft. Both saved as updated Google Docs for review; nothing sent or built in Klaviyo."
+  },
+  {
+    "timestamp": "2026-09-23T23:45:00Z",
+    "agent": "ops-overseer",
+    "summary": "Added a client entry for a fitness coach client to data.json with recurring-challenge context, and recorded a standing rule from Kelsey: a 'free gear for anyone who finishes' giveaway mechanic is discontinued and should be checked for and removed from any past or future challenge messaging/ad copy/emails."
   }
 ]
