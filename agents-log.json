@@ -48,5 +48,10 @@
     "timestamp": "2026-09-23T23:30:00Z",
     "agent": "ops-overseer",
     "summary": "Kelsey set a new house style rule: never use em dashes in documents/emails/ad copy going forward, use hyphens instead. Added as a standing _styleNote in data.json for all agents to follow, and flagged it to the email-campaigns agent currently revising the October challenge email doc."
+  },
+  {
+    "timestamp": "2026-09-23T23:35:00Z",
+    "agent": "email-campaigns",
+    "summary": "Revised the fall challenge email draft per client feedback: confirmed a pre-reg discount code, expanded one email into a full explainer of the new leaderboard/points feature, and applied the new no-em-dash house style. Also corrected the send dates and swapped the feedback-form link in a client's end-of-challenge email draft. Both saved as updated Google Docs for review; nothing sent or built in Klaviyo."
   }
 ]
