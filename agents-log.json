@@ -93,5 +93,10 @@
     "timestamp": "2026-09-27T10:00:00Z",
     "agent": "ops-overseer",
     "summary": "Kelsey merged the hidden lead-gen landing page PR - it's now live at its hidden URL. Flagged that the embedded demo tool itself still needs one manual end-to-end run-through (upload/render/chat/lead form), since the build session couldn't reach the hosting provider to verify it, and that the branding fix to the demo tool needs confirming it actually redeployed."
+  },
+  {
+    "timestamp": "2026-09-27T10:15:00Z",
+    "agent": "ops-overseer",
+    "summary": "Discovered the merged landing page PR was missing a fix from a follow-up commit that never made it into the merge - the live page had a blank demo embed and a placeholder contact link instead of the real ones. Reapplied that fix in a new PR, along with Kelsey's requested layout changes (new section headline, a vertical step-by-step layout with descriptions trimmed, single-image gallery cards instead of paired ones, and several more call-to-action buttons). New PR open for review, not yet merged."
   }
 ]
