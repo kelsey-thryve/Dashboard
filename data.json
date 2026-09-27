@@ -1610,7 +1610,13 @@
       "notifiedAt": null
     }
   ],
-  "ideas": [],
+  "ideas": [
+    {
+      "id": "landscapetool001",
+      "text": "PROJECT PLAN (2026-09-27): Duplicate the wardrobe-designer tool/page/outreach playbook for the outdoor/landscape design market. STATUS: waiting on the website agent's wardrobe-page build report (repo location, wardrobe-app container architecture, embed method) before launching this, to avoid duplicate investigation or conflicting edits on the same site/tool codebase. Once that lands, brief the website agent (tool + page) and sales agent (outreach list) in parallel using the decisions below.\n\nTARGET MARKET: broad 'Exterior & Outdoor Design' umbrella - landscapers, garden designers, deck/patio builders, and outdoor living companies together (NZ/AU/US, same geographic spread as the wardrobe outreach list).\n\nTOOL: same underlying container/architecture as wardrobe-app, reskinned with 4 configurable categories: (1) garden beds & planting layout, (2) decking & paving/pathways, (3) fencing & screening, (4) premium add-ons - pergolas, water features, outdoor kitchens.\n\nPAGE: hidden subpage at thryvegrowth.com/landscape (NOT in header/footer/sitemap nav, direct URL only) - same structure as /wardrobe: hero + subtext, a 4-item quick-benefits row, a How It Works step-by-step, the live tool embedded, placeholder before/after photos (no real ones yet), reviews section skipped for v1, and a placeholder 'Book a demo' link pending Kelsey's real booking URL.\n\nCOPY - recommended hero: 'Outdoor Spaces Designed For You'. Recommended subtext: 'The ultimate lead generation tool for landscape and outdoor design companies'. Draft benefits row: turns browsers into qualified leads / captures design specs automatically / plugs into any website / books consults with zero back-and-forth. (Kelsey wants fully new/different text from the wardrobe page, not reused copy - confirm final hero/subtext with her before publishing, same as the wardrobe page process.)\n\nOUTREACH: Kelsey confirmed yes to a full duplicate of the wardrobe outreach list (100+ companies, contacts, tailored pitch) for this market - sales agent to build this the same way it built the wardrobe list.",
+      "createdAt": 1790600000000
+    }
+  ],
   "links": [],
   "timeEntries": [
     {
