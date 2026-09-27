@@ -88,5 +88,10 @@
     "timestamp": "2026-09-27T09:30:00Z",
     "agent": "website",
     "summary": "Wired the real booking link and live demo URL into the hidden lead-gen landing page, and fixed a leftover placeholder-brand name in the demo tool's AI chat prompt."
+  },
+  {
+    "timestamp": "2026-09-27T10:00:00Z",
+    "agent": "ops-overseer",
+    "summary": "Kelsey merged the hidden lead-gen landing page PR - it's now live at its hidden URL. Flagged that the embedded demo tool itself still needs one manual end-to-end run-through (upload/render/chat/lead form), since the build session couldn't reach the hosting provider to verify it, and that the branding fix to the demo tool needs confirming it actually redeployed."
   }
 ]
