@@ -83,5 +83,10 @@
     "timestamp": "2026-09-27T08:05:00Z",
     "agent": "ops-overseer",
     "summary": "Checked the new landing page PR (open, clean merge, no CI configured, no reviews yet - waiting on Kelsey). Scheduled a check-in in an hour. Updated the outdoor/landscape project plan in data.json with the concrete repo/architecture facts and a hosting blocker (no Vercel/API key deployed yet) that will affect that build too."
+  },
+  {
+    "timestamp": "2026-09-27T09:30:00Z",
+    "agent": "website",
+    "summary": "Wired the real booking link and live demo URL into the hidden lead-gen landing page, and fixed a leftover placeholder-brand name in the demo tool's AI chat prompt."
   }
 ]
