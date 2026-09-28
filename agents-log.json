@@ -98,5 +98,10 @@
     "timestamp": "2026-09-27T10:15:00Z",
     "agent": "ops-overseer",
     "summary": "Discovered the merged landing page PR was missing a fix from a follow-up commit that never made it into the merge - the live page had a blank demo embed and a placeholder contact link instead of the real ones. Reapplied that fix in a new PR, along with Kelsey's requested layout changes (new section headline, a vertical step-by-step layout with descriptions trimmed, single-image gallery cards instead of paired ones, and several more call-to-action buttons). New PR open for review, not yet merged."
+  },
+  {
+    "timestamp": "2026-09-28T00:55:00Z",
+    "agent": "ops-overseer",
+    "summary": "Kelsey confirmed she'll reuse the existing AI billing key for the new outdoor/landscape lead-gen tool and handle hosting herself. Built the tool (forked and reskinned from the wardrobe one, correctly branded from the start) and sent it to her directly as a file, since this session's GitHub access can't create new repositories. Saved a full status update to data.json so the remaining work (the landing page copy, outreach list) can pick up cleanly later."
   }
 ]
