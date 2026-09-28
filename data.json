@@ -1601,6 +1601,986 @@
       "createdAt": 1790120960038,
       "updatedAt": 1790120960038,
       "notifiedAt": null
+    },
+    {
+      "id": "wardrobe1",
+      "name": "Wardrobe Design Centre",
+      "notes": "sales@wdc.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet. Auto-reply says they're away on annual closure until 2026-10-06 \u2014 factor that in before following up.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe2",
+      "name": "Mint Designer Kitchens",
+      "notes": "admin@mintdk.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe3",
+      "name": "Timber Wonder Cabinet",
+      "notes": "info@timberwondercabinet.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe4",
+      "name": "Flexi Robes",
+      "notes": "sales@flexirobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe5",
+      "name": "Robes Collective",
+      "notes": "info@robescollective.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe6",
+      "name": "Melbourne Wardrobes Online",
+      "notes": "wardrobe@melbournewardrobesonline.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe7",
+      "name": "Space Works Design (Melbourne)",
+      "notes": "melbourne@spaceworks.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe8",
+      "name": "Quality Wardrobes",
+      "notes": "s_juddin@yahoo.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe9",
+      "name": "Almara Cabinets",
+      "notes": "info@almara.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe10",
+      "name": "Unique Wardrobes and Interiors",
+      "notes": "sales@uniquestorage.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe11",
+      "name": "Perfect Interior",
+      "notes": "Quote@perfectfitinterior.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe12",
+      "name": "Saint Louis Closet Co.",
+      "notes": "info@stlouisclosetco.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe13",
+      "name": "Closet Connection",
+      "notes": "rhonda@closetconnection.net \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe14",
+      "name": "Valet Custom Cabinets & Closets",
+      "notes": "info@valetcustom.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe15",
+      "name": "Closet World",
+      "notes": "customerservice@closetworld.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe16",
+      "name": "Diplomat Closet Design",
+      "notes": "sales@diplomatclosetdesign.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe17",
+      "name": "California Closets",
+      "notes": "customer.service@calclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe18",
+      "name": "Closet Factory",
+      "notes": "info@closetfactory.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe19",
+      "name": "Boston Closet Company",
+      "notes": "BostonCloset@gmail.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe20",
+      "name": "Closet Creations Inc",
+      "notes": "danielle@closetcreationsinc.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe21",
+      "name": "Chicago Closets & Cabinetry",
+      "notes": "michelle@chicago-closets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe22",
+      "name": "Portland Custom Closets",
+      "notes": "info@portlandcustomclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe23",
+      "name": "CTS Custom Cabinets",
+      "notes": "Jon@ctscustom.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe24",
+      "name": "Creative Closets NV",
+      "notes": "marcelo@creativeclosetsnv.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe25",
+      "name": "Premier Custom Closets",
+      "notes": "info@premiercustomclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe26",
+      "name": "Up Closets of Orlando",
+      "notes": "jcichon@upclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe27",
+      "name": "Custom Closets and Cabinets",
+      "notes": "info@ckcflorida.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe28",
+      "name": "Pittsburgh Closets",
+      "notes": "info@pittsburghclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe29",
+      "name": "Up Closets of Memphis",
+      "notes": "Memphis@upclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe30",
+      "name": "Inspired Closets Milwaukee",
+      "notes": "info@inspiredclosetsmke.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe31",
+      "name": "Up Closets of Raleigh",
+      "notes": "kperks@upclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe32",
+      "name": "Dell Anno",
+      "notes": "contact@dellanova.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe33",
+      "name": "Closets and More, Inc",
+      "notes": "support@closetsandmoreinc.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe34",
+      "name": "Custom Closets Miami",
+      "notes": "Info@customclosetsmia.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe35",
+      "name": "First Coast Closets",
+      "notes": "info@firstcoastclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe36",
+      "name": "Remark Interiors",
+      "notes": "oksana@remarkinteriors.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe37",
+      "name": "The Closet Guys",
+      "notes": "theclosetguys@yahoo.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe38",
+      "name": "Closet EZ",
+      "notes": "closetezinfo@gmail.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe39",
+      "name": "Up Closets of Savannah",
+      "notes": "savannah@upclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe40",
+      "name": "A Better Closet",
+      "notes": "sales@abettercloset.net \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe41",
+      "name": "Custom-Closets (Louisville)",
+      "notes": "Info@custom-closets.us \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe42",
+      "name": "Custom Closet Guys",
+      "notes": "richard@customclosetguys.com \u2014 replied interested, demo call booked (calendar invite sent) re: AI closet designer tool.",
+      "stage": "meeting",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe43",
+      "name": "Closet Trends",
+      "notes": "info@closettrendsaz.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe44",
+      "name": "Closet Factory El Paso",
+      "notes": "nancy.posey@closetfactoryelpaso.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe45",
+      "name": "Fresno Cabinet Outlet",
+      "notes": "contact@fresnocabinets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe46",
+      "name": "Closet Magician Silicon Valley",
+      "notes": "sue@closetmagiciansiliconvalley.com \u2014 replied to AI closet designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe47",
+      "name": "Munoz Cabinetry",
+      "notes": "munozcabinets@hotmail.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe48",
+      "name": "Up Closets of Omaha",
+      "notes": "jpollert@upclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe49",
+      "name": "Harmony Home Concepts",
+      "notes": "hello@harmonyks.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe50",
+      "name": "Closets Up",
+      "notes": "info@closetsup.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe51",
+      "name": "Inland Commercial Casework",
+      "notes": "info@inlandcase.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe52",
+      "name": "Clozetivity of Northwest CT",
+      "notes": "nwct@clozetivity.com \u2014 BOUNCED (invalid address) on outreach for AI closet designer tool. Do not resend to this address; needs a corrected contact.",
+      "stage": "prospect",
+      "reachedOutDate": null,
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe53",
+      "name": "Concept II Closets",
+      "notes": "info@concept-ii.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe54",
+      "name": "California Closets Syracuse",
+      "notes": "lathamshowroom@calclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe55",
+      "name": "NJ Doors & Closets",
+      "notes": "info@njdoorsclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe56",
+      "name": "California Closets VA Beach",
+      "notes": "ccva@calclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe57",
+      "name": "California Closets Greensboro",
+      "notes": "rclosets@calclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe58",
+      "name": "Inspired Closets Durham",
+      "notes": "info@inspiredclosetsraleigh.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe59",
+      "name": "Inspired Closets Charleston",
+      "notes": "info@inspiredclosetschas.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe60",
+      "name": "Closet Factory Little Rock",
+      "notes": "david.fraiser@closetfactory.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe61",
+      "name": "Capitol Custom Closets",
+      "notes": "info@capitolcustomclosets.com \u2014 BOUNCED (invalid address) on outreach for AI closet designer tool. Do not resend to this address; needs a corrected contact.",
+      "stage": "prospect",
+      "reachedOutDate": null,
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe62",
+      "name": "The Closet Connection (West Michigan)",
+      "notes": "closetconnection11@comcast.net \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe63",
+      "name": "Dayton Designer Closets",
+      "notes": "sales@daytondesignerclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe64",
+      "name": "Closets by McKenry",
+      "notes": "chris@closetsbymckenry.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe65",
+      "name": "Inspired Closets Baton Rouge",
+      "notes": "info@inspiredclosetsbr.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe66",
+      "name": "The Closet Works, Inc.",
+      "notes": "info@closetworksinc.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe67",
+      "name": "Up Closets",
+      "notes": "tscott@homerunfranchises.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-25",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe68",
+      "name": "Inspired Closets",
+      "notes": "Sales@inspiredcloetsdetroit.com \u2014 BOUNCED (invalid address) on outreach for AI closet designer tool. Do not resend to this address; needs a corrected contact.",
+      "stage": "prospect",
+      "reachedOutDate": null,
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe69",
+      "name": "Finesse Joinery",
+      "notes": "admin@finessejoinery.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe70",
+      "name": "Stash",
+      "notes": "sales@stash.net.nz \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe71",
+      "name": "Wardrobe World",
+      "notes": "admin@wardrobeworld.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe72",
+      "name": "Studio Italia",
+      "notes": "info@studioitalia.co.nz \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe73",
+      "name": "Cabjaks",
+      "notes": "info@cabjaks.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe74",
+      "name": "Slide Shop",
+      "notes": "info@slideshop.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe75",
+      "name": "Brissy Wardrobes",
+      "notes": "brissywardrobes@gmail.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe76",
+      "name": "Innerspace Wardrobes (Hobart)",
+      "notes": "hobart@innerspace.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe77",
+      "name": "Innerspace Wardrobes (Melbourne)",
+      "notes": "melbourne@innerspace.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe78",
+      "name": "Innerspace Wardrobes (Launceston)",
+      "notes": "launceston@innerspace.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe79",
+      "name": "Lifestyle Wardrobes",
+      "notes": "qld@lifestylewardrobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe80",
+      "name": "Impressive Wardrobes",
+      "notes": "info@impressivewardrobes.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe81",
+      "name": "Fox Wardrobes",
+      "notes": "dmc@foxwardrobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe82",
+      "name": "Factory Direct Wardrobes",
+      "notes": "sales@factorydirectwardrobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe83",
+      "name": "CWBSS",
+      "notes": "sales@cbwss.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe84",
+      "name": "The Wardrobe Professionals",
+      "notes": "info@thewardrobeprofessionals.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe85",
+      "name": "Space Works Design",
+      "notes": "webmaster@spaceworksdesign.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe86",
+      "name": "7am Wardrobes",
+      "notes": "hello@7amwardrobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe87",
+      "name": "Wells Cabinets",
+      "notes": "nfo@wellscabinets.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe88",
+      "name": "Bedspacedesign",
+      "notes": "sales@bedspacedesign.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe89",
+      "name": "Wardrobes Direct",
+      "notes": "sales@wardrobesdirect.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe90",
+      "name": "Innovative Interiors",
+      "notes": "info@innovativeinteriors.co.nz \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe91",
+      "name": "Versa Robes",
+      "notes": "info@versarobes.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe92",
+      "name": "The Wardrobe Man",
+      "notes": "sales@wardrobeman.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe93",
+      "name": "Sydney Wardrobe Company",
+      "notes": "sales@sydneywardrobe.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe94",
+      "name": "Modern Design Wardrobes",
+      "notes": "info@moderndesignwardrobes.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe95",
+      "name": "Creative by Design",
+      "notes": "admin@creativebydesign.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe96",
+      "name": "YourWay Design",
+      "notes": "info@yourwaydesign.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe97",
+      "name": "Artisan Custom Closets",
+      "notes": "info@artisan-atl.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "wardrobe98",
+      "name": "Bella Systems",
+      "notes": "closetsphilly@bella-systems.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-09-24",
+      "createdAt": 1790556694772,
+      "updatedAt": 1790556694772,
+      "notifiedAt": null
     }
   ],
   "ideas": [],
