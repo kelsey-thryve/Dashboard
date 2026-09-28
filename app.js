@@ -189,8 +189,12 @@ function removeTodo(id) {
   renderAll();
 }
 
+// Built-in "client" for internal sales tasks — not a real entry in state.clients.
+const SALES_CLIENT_ID = 'sales';
+
 function clientChip(clientId) {
   if (!clientId) return '';
+  if (clientId === SALES_CLIENT_ID) return '<span class="task__chip">Sales</span>';
   const client = state.clients.find(c => c.id === clientId);
   if (!client) return '';
   return `<span class="task__chip">${escapeHtml(client.name)}</span>`;
@@ -198,6 +202,7 @@ function clientChip(clientId) {
 
 function clientOptions(selectedId) {
   return '<option value="">No client</option>' +
+    `<option value="${SALES_CLIENT_ID}" ${selectedId === SALES_CLIENT_ID ? 'selected' : ''}>Sales</option>` +
     state.clients.map(c => `<option value="${c.id}" ${c.id === selectedId ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('');
 }
 
@@ -297,6 +302,7 @@ function populateClientSelects() {
   const filter = document.getElementById('todoFilter');
   const currentFilter = filter.value;
   filter.innerHTML = '<option value="all">All clients</option><option value="none">Unassigned</option>' +
+    `<option value="${SALES_CLIENT_ID}">Sales</option>` +
     state.clients.map(c => `<option value="${c.id}">${escapeHtml(c.name)}</option>`).join('');
   if ([...filter.options].some(o => o.value === currentFilter)) filter.value = currentFilter;
 }
