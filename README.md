@@ -95,6 +95,14 @@ invoked on demand (e.g. "sales agent, draft outreach to X"). Their
 definitions live outside this repo, at `~/.claude/agents/thryve-*.md` on
 Kelsey's machine.
 
+### Shared reference docs
+
+`reference/` holds material any agent can pull from for its work (not
+business data — that's `data.json`). Currently:
+
+- `reference/headline-formulas.md` — the 200+ headline formula library, for
+  ad headlines, subject lines, and hooks across any agent/client.
+
 When an agent does something worth tracking, it appends an entry to
 `agents-log.json` (`{timestamp, agent, summary}`) and commits/pushes it here,
 which is what the Agents tab's activity feed reads. `data.json` is the

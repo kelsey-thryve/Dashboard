@@ -108,5 +108,10 @@
     "agent": "website",
     "timestamp": "2026-09-29T00:52:28Z",
     "summary": "Built first draft of The Roof Crew multi-page site (16 pages) in kelsey-thryve/roofcrew"
+  },
+  {
+    "agent": "design",
+    "timestamp": "2026-10-01T02:30:00Z",
+    "summary": "Added reference/headline-formulas.md (the 200+ headline formula library) to the repo as a shared reference doc any agent can use for headlines/subject lines/hooks."
   }
 ]
