@@ -153,5 +153,10 @@
     "agent": "analytics",
     "timestamp": "2026-10-05T00:10:00Z",
     "summary": "Reviewed a fitness client's non-challenge Meta ad performance to find the strongest existing copy, then drafted a new batch of evergreen membership ad copy based on it for review."
+  },
+  {
+    "agent": "ops-overseer",
+    "timestamp": "2026-10-06T23:00:00Z",
+    "summary": "The hidden lead-gen landing page follow-up PR (centered step layout, single-image gallery, demo/booking link fix) was merged - all of it is now live."
   }
 ]
