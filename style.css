@@ -606,6 +606,17 @@ select#todoFilter, .select--small {
   line-height: 1.5;
 }
 
+.clientBoard__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.clientBoard__links a { color: var(--series-1); text-decoration: none; }
+.clientBoard__links a:hover { text-decoration: underline; }
+.clientBoard__work .docRow__size { width: auto; }
+
 .clientBoard__docs label.btn {
   display: inline-flex;
   align-items: center;

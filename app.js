@@ -672,6 +672,7 @@ function renderClients() {
         ${revenueFromClient > 0 ? `<p class="clientBoard__revenue">${fmtMoney(revenueFromClient)} in confirmed revenue all-time</p>` : ''}
         ${timeForClient > 0 ? `<p class="clientBoard__time">${fmtDuration(timeForClient)} logged all-time</p>` : ''}
         ${renderClientContext(client)}
+        ${renderClientWork(client)}
         ${renderClientDocs(client)}
         <form class="clientBoard__form" data-action="client-todo-form" data-client-id="${client.id}">
           <input type="text" name="text" placeholder="Add a task for ${escapeHtml(client.name)}…" maxlength="200" required />
@@ -707,6 +708,38 @@ function renderClientContext(client) {
       </div>`;
   }
   return `<button type="button" class="btn btn--ghost btn--small" data-action="edit-client-context" data-id="${client.id}">+ Add context for agents</button>`;
+}
+
+/* ---- Client work: Drive folder, Client Log and recent agent work (from data.json + agents-log.json) ---- */
+
+function renderClientWork(client) {
+  const snap = agentsSnapshot && (agentsSnapshot.clients || []).find(c => c.id === client.id);
+  const drive = snap && snap.drive;
+  const logId = agentsSnapshot && agentsSnapshot.clientLog && agentsSnapshot.clientLog.sheetId;
+  const work = agentsLog
+    .filter(e => e.clientId === client.id)
+    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+    .slice(0, 5);
+  if (!drive && !work.length) return '';
+  const links = [];
+  if (drive && drive.folderId) links.push(`<a href="https://drive.google.com/drive/folders/${encodeURIComponent(drive.folderId)}" target="_blank" rel="noopener noreferrer">Drive folder</a>`);
+  if (drive && drive.meetingNotesFolderId) links.push(`<a href="https://drive.google.com/drive/folders/${encodeURIComponent(drive.meetingNotesFolderId)}" target="_blank" rel="noopener noreferrer">Meeting notes</a>`);
+  if (logId) links.push(`<a href="https://docs.google.com/spreadsheets/d/${encodeURIComponent(logId)}/edit" target="_blank" rel="noopener noreferrer">Client Log</a>`);
+  return `
+    <div class="clientBoard__work">
+      <div class="clientBoard__sectionHead"><span>Client work</span></div>
+      ${links.length ? `<div class="clientBoard__links">${links.join('')}</div>` : ''}
+      ${work.length
+        ? `<div class="docList">${work.map(e => {
+            const agent = AGENTS.find(a => a.id === e.agent);
+            return `<div class="docRow">
+              <span class="task__chip" style="background:${agent ? agent.color : 'var(--baseline)'};color:#fff">${escapeHtml(agent ? agent.name : e.agent)}</span>
+              <span class="docRow__name">${escapeHtml(e.summary)}</span>
+              <span class="docRow__size">${timeAgo(e.timestamp)}</span>
+            </div>`;
+          }).join('')}</div>`
+        : '<div class="list__empty">No agent work logged for this client yet.</div>'}
+    </div>`;
 }
 
 /* ---- Client documents (stored in IndexedDB, not synced to agents) ---- */
@@ -882,9 +915,11 @@ function renderAgentActivity() {
   document.getElementById('agentActivity').innerHTML = sorted.length
     ? sorted.map(e => {
         const agent = AGENTS.find(a => a.id === e.agent);
+        const client = e.clientId && state.clients.find(c => c.id === e.clientId);
         return `
           <div class="task">
             <span class="task__chip" style="background:${agent ? agent.color : 'var(--baseline)'};color:#fff">${escapeHtml(agent ? agent.name : e.agent)}</span>
+            ${client ? `<span class="task__chip">${escapeHtml(client.name)}</span>` : ''}
             <span class="task__text">${escapeHtml(e.summary)}</span>
             <span class="task__chip">${timeAgo(e.timestamp)}</span>
           </div>`;
@@ -929,6 +964,7 @@ async function loadAgentsData() {
   renderAgentCards();
   renderAgentActivity();
   renderAgentsSnapshot();
+  renderClients();
 }
 
 /* ---- Key Links ---- */
