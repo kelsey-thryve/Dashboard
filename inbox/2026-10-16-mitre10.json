@@ -1,0 +1,13 @@
+{
+  "source": "Mitre 10 Garden Designer pitch",
+  "client": "Sales",
+  "tasks": [
+    "Send Mitre 10 pitch emails, wave 1 (retail marketing + digital CX)",
+    "Send Mitre 10 pitch emails, wave 2 (marketing, eCommerce, paid media)",
+    "Follow up Mitre 10 wave 1 if no reply in 5 days",
+    "Export a fresh PDF of the Mitre 10 deck"
+  ],
+  "prospects": [
+    {"name": "Mitre 10 NZ (Garden Designer)", "stage": "prospect", "note": "Garden Designer pilot pitch: tool, landing page, Meta campaign (10-100 creatives), ChatGPT ads, DIY creator campaign. Contacts in the private Mitre 10 pitch doc. Emails go out Oct 16 from CFive."}
+  ]
+}
