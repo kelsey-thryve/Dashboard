@@ -19,7 +19,8 @@ function defaultState() {
     prospects: [],    // {id, name, notes, stage, reachedOutDate, updatedAt, notifiedAt}
     ideas: [],        // {id, text, createdAt}
     links: [],        // {id, label, url}
-    timeEntries: []   // {id, todoId, minutes, date, note, createdAt}
+    timeEntries: [],  // {id, todoId, minutes, date, note, createdAt}
+    importedInbox: [] // inbox/*.json filenames already turned into to-dos
   };
 }
 
@@ -965,6 +966,77 @@ async function loadAgentsData() {
   renderAgentActivity();
   renderAgentsSnapshot();
   renderClients();
+  importInboxTasks();
+}
+
+/* ---- Meeting action items: inbox/*.json in the repo (written by the Make meeting-notes scenario) ---- */
+
+const INBOX_API = 'https://api.github.com/repos/kelsey-thryve/dashboard/contents/inbox';
+
+function clientIdForLabel(label) {
+  if (!label) return null;
+  const key = label.trim().toLowerCase();
+  const snap = agentsSnapshot && (agentsSnapshot.clients || []).find(c => c.drive && (c.drive.logLabel || '').toLowerCase() === key);
+  if (snap && state.clients.some(c => c.id === snap.id)) return snap.id;
+  const local = state.clients.find(c => c.name.trim().toLowerCase().startsWith(key));
+  return local ? local.id : null;
+}
+
+async function importInboxTasks() {
+  let listing;
+  try {
+    const res = await fetch(INBOX_API, { cache: 'no-store' });
+    if (!res.ok) return;
+    listing = await res.json();
+  } catch (e) {
+    return;
+  }
+  if (!Array.isArray(listing)) return;
+  const fresh = listing.filter(f => f.type === 'file' && f.name.endsWith('.json') && !state.importedInbox.includes(f.name));
+  if (!fresh.length) return;
+  let added = 0;
+  for (const f of fresh) {
+    try {
+      const res = await fetch(f.download_url, { cache: 'no-store' });
+      if (!res.ok) continue;
+      const batch = await res.json();
+      const clientId = clientIdForLabel(batch.client);
+      (batch.tasks || []).forEach(text => {
+        if (typeof text !== 'string' || !text.trim()) return;
+        state.todos.push({
+          id: uid(), text: text.trim().slice(0, 200), done: false, doneWeek: null, recurring: false,
+          clientId, dueDate: null, createdAt: Date.now()
+        });
+        added++;
+      });
+      (batch.prospects || []).forEach(u => {
+        if (!u || !u.name || !STAGE_ORDER.includes(u.stage)) return;
+        const email = (u.email || '').toLowerCase();
+        const match = state.prospects.find(p =>
+          (email && (p.notes || '').toLowerCase().includes(email)) ||
+          p.name.trim().toLowerCase() === u.name.trim().toLowerCase());
+        const notes = [email, u.note].filter(Boolean).join(' - ');
+        if (match) {
+          match.stage = u.stage;
+          if (notes) match.notes = notes;
+          if (u.stage !== 'prospect' && !match.reachedOutDate) match.reachedOutDate = u.date || todayISO();
+          match.updatedAt = Date.now();
+        } else {
+          state.prospects.push({
+            id: uid(), name: u.name.trim(), notes, stage: u.stage,
+            reachedOutDate: u.stage === 'prospect' ? null : (u.date || todayISO()),
+            updatedAt: Date.now(), notifiedAt: null
+          });
+        }
+        added++;
+      });
+      state.importedInbox.push(f.name);
+    } catch (e) {
+      console.error('Could not import meeting tasks from', f.name, e);
+    }
+  }
+  save();
+  if (added) renderAll();
 }
 
 /* ---- Key Links ---- */
