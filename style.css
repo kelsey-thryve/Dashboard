@@ -408,6 +408,10 @@ select#todoFilter, .select--small {
   white-space: nowrap;
 }
 .task__chip--recurring { background: var(--series-1-track); color: var(--series-1); }
+.task__chip--client { background: var(--series-2-track); color: var(--series-2); font-weight: 600; }
+.task__chip--sales { background: transparent; border: 1px solid var(--series-3); color: var(--series-3); font-weight: 600; }
+.task__chip--untagged { border: 1px dashed var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font: inherit; font-size: 11px; }
+.task__chip--untagged:hover { color: var(--text-secondary); }
 
 .entry-row {
   display: flex;

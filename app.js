@@ -195,10 +195,41 @@ const SALES_CLIENT_ID = 'sales';
 
 function clientChip(clientId) {
   if (!clientId) return '';
-  if (clientId === SALES_CLIENT_ID) return '<span class="task__chip">Sales</span>';
+  if (clientId === SALES_CLIENT_ID) return '<span class="task__chip task__chip--sales">Sales</span>';
   const client = state.clients.find(c => c.id === clientId);
   if (!client) return '';
-  return `<span class="task__chip">${escapeHtml(client.name)}</span>`;
+  return `<span class="task__chip task__chip--client">${escapeHtml(client.name)}</span>`;
+}
+
+function untaggedChip(todoId) {
+  return `<button type="button" class="task__chip task__chip--untagged" data-action="edit-todo" data-id="${todoId}" title="Tag a client">+ tag</button>`;
+}
+
+// Words that mark a to-do as sales/prospecting work when it isn't tied to a client.
+const SALES_KEYWORDS = ['reach out', 'outreach', 'follow up with', 'follow-up', 'prospect', 'pitch', 'demo', 'proposal', 'cold email', 'loom video sent'];
+
+// Best guess at a to-do's client from its wording: a client's name, else sales wording, else null.
+function guessClientId(text) {
+  const t = ' ' + text.toLowerCase() + ' ';
+  for (const c of state.clients) {
+    const names = [c.name.split(/\s+/)[0], c.name.replace(/\s+/g, '')];
+    const snap = agentsSnapshot && (agentsSnapshot.clients || []).find(x => x.id === c.id);
+    if (snap && snap.drive && snap.drive.logLabel) names.push(snap.drive.logLabel);
+    const squashed = t.replace(/\s+/g, '');
+    if (names.some(n => n && n.length >= 4 && (t.includes(n.toLowerCase()) || squashed.includes(n.toLowerCase())))) return c.id;
+  }
+  if (SALES_KEYWORDS.some(k => t.includes(k))) return SALES_CLIENT_ID;
+  return null;
+}
+
+// One pass over untagged to-dos, tagging the ones whose client is obvious from the text.
+function autoTagTodos() {
+  if (state.autoTaggedV1) return;
+  state.todos.forEach(t => {
+    if (!t.clientId) t.clientId = guessClientId(t.text);
+  });
+  state.autoTaggedV1 = true;
+  save();
 }
 
 function clientOptions(selectedId) {
@@ -243,7 +274,7 @@ function renderTodoItem(todo, opts) {
       ${todo.recurring ? '<span class="task__chip task__chip--recurring">Weekly</span>' : ''}
       ${dueChip}
       ${timeChip}
-      ${opts.showClient ? clientChip(todo.clientId) : ''}
+      ${opts.showClient ? (clientChip(todo.clientId) || untaggedChip(todo.id)) : ''}
       <button type="button" class="btn--icon ${logOpen ? 'is-active' : ''}" data-action="toggle-timelog" data-id="${todo.id}" title="Log time">⏱</button>
       <button type="button" class="btn--icon" data-action="edit-todo" data-id="${todo.id}" title="Edit">✎</button>
       <button type="button" class="btn--icon" data-action="remove-todo" data-id="${todo.id}" title="Remove">✕</button>
@@ -965,7 +996,8 @@ async function loadAgentsData() {
   renderAgentCards();
   renderAgentActivity();
   renderAgentsSnapshot();
-  renderClients();
+  autoTagTodos();
+  renderAll();
   importInboxTasks();
 }
 
@@ -976,6 +1008,7 @@ const INBOX_API = 'https://api.github.com/repos/kelsey-thryve/dashboard/contents
 function clientIdForLabel(label) {
   if (!label) return null;
   const key = label.trim().toLowerCase();
+  if (key === 'sales') return SALES_CLIENT_ID;
   const snap = agentsSnapshot && (agentsSnapshot.clients || []).find(c => c.drive && (c.drive.logLabel || '').toLowerCase() === key);
   if (snap && state.clients.some(c => c.id === snap.id)) return snap.id;
   const local = state.clients.find(c => c.name.trim().toLowerCase().startsWith(key));
@@ -1000,12 +1033,15 @@ async function importInboxTasks() {
       const res = await fetch(f.download_url, { cache: 'no-store' });
       if (!res.ok) continue;
       const batch = await res.json();
-      const clientId = clientIdForLabel(batch.client);
+      const label = (batch.client || '').trim();
+      const clientId = clientIdForLabel(label);
+      // A client that isn't on the dashboard yet (e.g. a new account) keeps its name in the task text.
+      const prefix = !clientId && label && label.toLowerCase() !== 'unsorted' ? label + ': ' : '';
       (batch.tasks || []).forEach(text => {
         if (typeof text !== 'string' || !text.trim()) return;
         state.todos.push({
-          id: uid(), text: text.trim().slice(0, 200), done: false, doneWeek: null, recurring: false,
-          clientId, dueDate: null, createdAt: Date.now()
+          id: uid(), text: (prefix + text.trim()).slice(0, 200), done: false, doneWeek: null, recurring: false,
+          clientId: clientId || guessClientId(text), dueDate: null, createdAt: Date.now()
         });
         added++;
       });
