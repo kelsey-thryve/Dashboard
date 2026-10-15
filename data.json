@@ -1638,7 +1638,7 @@
     {
       "id": "wardrobe1",
       "name": "Wardrobe Design Centre",
-      "notes": "sales@wdc.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet. Auto-reply says they're away on annual closure until 2026-10-06 \u2014 factor that in before following up.",
+      "notes": "sales@wdc.com.au - Out of office until Oct 6, no reply since - nudge",
       "stage": "reached_out",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
@@ -1678,8 +1678,8 @@
     {
       "id": "wardrobe5",
       "name": "Robes Collective",
-      "notes": "info@robescollective.com.au \u2014 cold outreach sent re: AI wardrobe designer tool, no reply yet.",
-      "stage": "reached_out",
+      "notes": "info@robescollective.com.au - DECLINED Oct 2 (not right now) - do not chase",
+      "stage": "prospect",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
@@ -1908,8 +1908,8 @@
     {
       "id": "wardrobe28",
       "name": "Pittsburgh Closets",
-      "notes": "info@pittsburghclosets.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
-      "stage": "reached_out",
+      "notes": "info@pittsburghclosets.com - BOUNCED on AI closet designer outreach",
+      "stage": "prospect",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
@@ -1928,8 +1928,8 @@
     {
       "id": "wardrobe30",
       "name": "Inspired Closets Milwaukee",
-      "notes": "info@inspiredclosetsmke.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
-      "stage": "reached_out",
+      "notes": "info@inspiredclosetsmke.com - DECLINED Oct 7 (already has similar software) - do not chase",
+      "stage": "prospect",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
@@ -1948,8 +1948,8 @@
     {
       "id": "wardrobe32",
       "name": "Dell Anno",
-      "notes": "contact@dellanova.com \u2014 cold outreach sent re: AI closet designer tool, no reply yet.",
-      "stage": "reached_out",
+      "notes": "contact@dellanova.com - BOUNCED on AI closet designer outreach",
+      "stage": "prospect",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
@@ -2088,7 +2088,7 @@
     {
       "id": "wardrobe46",
       "name": "Closet Magician Silicon Valley",
-      "notes": "sue@closetmagiciansiliconvalley.com \u2014 replied to AI closet designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "notes": "sue@closetmagiciansiliconvalley.com - INTERESTED - demo video sent Sep 27, followed up Oct 7, no reply",
       "stage": "follow_up",
       "reachedOutDate": "2026-09-25",
       "createdAt": 1790556694772,
@@ -2348,7 +2348,7 @@
     {
       "id": "wardrobe72",
       "name": "Studio Italia",
-      "notes": "info@studioitalia.co.nz \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "notes": "joanna@studioitalia.co.nz - INTERESTED - discussing with team; offered to load their Poliform catalogue",
       "stage": "follow_up",
       "reachedOutDate": "2026-09-24",
       "createdAt": 1790556694772,
@@ -2428,7 +2428,7 @@
     {
       "id": "wardrobe80",
       "name": "Impressive Wardrobes",
-      "notes": "info@impressivewardrobes.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "notes": "charlie@impressivewardrobes.com.au - INTERESTED - demo video sent Sep 25, no reply since",
       "stage": "follow_up",
       "reachedOutDate": "2026-09-24",
       "createdAt": 1790556694772,
@@ -2568,7 +2568,7 @@
     {
       "id": "wardrobe94",
       "name": "Modern Design Wardrobes",
-      "notes": "info@moderndesignwardrobes.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
+      "notes": "info@moderndesignwardrobes.com.au - Lukewarm - asked about SEO plans, replied Sep 24",
       "stage": "follow_up",
       "reachedOutDate": "2026-09-24",
       "createdAt": 1790556694772,
@@ -2578,8 +2578,8 @@
     {
       "id": "wardrobe95",
       "name": "Creative by Design",
-      "notes": "admin@creativebydesign.com.au \u2014 replied to AI wardrobe designer tool outreach, conversation in progress. Check thread for latest before any bulk follow-up send.",
-      "stage": "follow_up",
+      "notes": "admin@creativebydesign.com.au - DECLINED Sep 24 (passed on price) - do not chase",
+      "stage": "prospect",
       "reachedOutDate": "2026-09-24",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
@@ -2613,6 +2613,1275 @@
       "reachedOutDate": "2026-09-24",
       "createdAt": 1790556694772,
       "updatedAt": 1790556694772,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct212",
+      "name": "Up Closets of Birmingham",
+      "notes": "birmingham@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct213",
+      "name": "Up Closets of Mesa",
+      "notes": "ccummings@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct214",
+      "name": "Up Closets of NW Arkansas",
+      "notes": "aforrestal@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct215",
+      "name": "Up Closets of Douglas County",
+      "notes": "kristin@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct216",
+      "name": "NOVA Custom Closet",
+      "notes": "info@novaclosets.ca - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct217",
+      "name": "Up Closets of Connecticut",
+      "notes": "nyigit@upclosets.com - INTERESTED - asked for demo; Oct 7 time never confirmed, reschedule",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct218",
+      "name": "Custom Closets Florida (CCF)",
+      "notes": "sales@customclosetflorida.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct219",
+      "name": "Up Closets of Delaware",
+      "notes": "delaware@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct220",
+      "name": "Closets Plus",
+      "notes": "admin@closetsplusfl.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct221",
+      "name": "Affordable Closets",
+      "notes": "admin@affordableclosets.biz - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct222",
+      "name": "Up Closets of Palm Beach",
+      "notes": "csmith@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct223",
+      "name": "Closets NW",
+      "notes": "staceymiller@closets-nw.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct224",
+      "name": "Up Closets of Pasco County",
+      "notes": "amurphy@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-06",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct225",
+      "name": "Classy Closets Austin",
+      "notes": "appointments@classycompanies.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct226",
+      "name": "Cutting Edge Closets",
+      "notes": "info@cuttingedgeclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct227",
+      "name": "Up Closets of Port St. Lucie",
+      "notes": "kfoster@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct228",
+      "name": "The Closet Company",
+      "notes": "info@closetcompany.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct229",
+      "name": "Up Closets of Sarasota",
+      "notes": "chammerly@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct230",
+      "name": "Closets For Life",
+      "notes": "info@closetsforlife.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct231",
+      "name": "Clever Closets",
+      "notes": "jess@cleverclosetsinc.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct232",
+      "name": "Closets by Design SLC",
+      "notes": "info@closetsbydesign.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct233",
+      "name": "Up Closets of Tampa",
+      "notes": "tampaorlando@upclosets.com - INTERESTED - wants demo, busy calendar; you asked for a time after 3pm ET (Oct 12)",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct234",
+      "name": "Up Closets of MetroWest and Greater Boston",
+      "notes": "radhika@upclosets.com - INTERESTED - sent demo video Oct 7, no reply yet",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct235",
+      "name": "Cleveland Closet Co.",
+      "notes": "clevelandcloset@sbcglobal.net - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct236",
+      "name": "Up Closets of St Louis",
+      "notes": "dshort@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct237",
+      "name": "Solare Closets",
+      "notes": "info@solarellc.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct238",
+      "name": "Custom Closet Geeks",
+      "notes": "salescustomclosetgeeks@gmail.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct239",
+      "name": "Up Closets of Fargo",
+      "notes": "gjordahl@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct240",
+      "name": "Up Closets of Columbus",
+      "notes": "jlogan@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct241",
+      "name": "Up Closets of Portland",
+      "notes": "portland@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct242",
+      "name": "The Tailored Closet - Duluth, GA",
+      "notes": "jkim@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct243",
+      "name": "Up Closets of Abbeville",
+      "notes": "sstreit@upclosets.com - AI closet designer outreach sent (also pitched for: Up Closets of Anderson, Up Closets of Greenville, Up Closets of Greenwood, Up Closets of McCormick, Up Closets of Oconee, Up Closets of Pickens, Up Closets of The Upstate)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct244",
+      "name": "Up Closets of Union County",
+      "notes": "cole@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct245",
+      "name": "Up Closets of Southwest Florida",
+      "notes": "gwalter@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct246",
+      "name": "Closet Concepts",
+      "notes": "joe.ross@closetconceptsinc.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct247",
+      "name": "TCS Woodworking",
+      "notes": "info@tcswoodwork.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct248",
+      "name": "Chattanooga Closet Company",
+      "notes": "getorganized@chattanoogacloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct249",
+      "name": "Up Closets of Grand Rapids",
+      "notes": "jtonks@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct250",
+      "name": "KC Custom Closets + Garage",
+      "notes": "jeff@kccustomclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct251",
+      "name": "Up Closets of North Atlanta Metro",
+      "notes": "northatlantametro@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct252",
+      "name": "Up Closets of Chicago",
+      "notes": "chicago@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct253",
+      "name": "Up Closets of North Detroit",
+      "notes": "zach@upclosets.com - INTERESTED - proposed Tue Oct 13 4pm EDT, never confirmed, reschedule",
+      "stage": "follow_up",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct254",
+      "name": "Up Closets of Indianapolis",
+      "notes": "aschreiber@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct255",
+      "name": "The Tailored Closet - Arcadia, CA",
+      "notes": "james.wong@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct256",
+      "name": "Up Closets of Pittsburgh",
+      "notes": "djunker@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct257",
+      "name": "Phoenix Closet Company",
+      "notes": "phxclosetco@gmail.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct258",
+      "name": "Up Closets of Maple Grove",
+      "notes": "rfossum@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct259",
+      "name": "PLC Closets",
+      "notes": "info@plcclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct260",
+      "name": "Up Closets of Rhode Island",
+      "notes": "rhodeisland@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct261",
+      "name": "The Tailored Closet - Reisterstown, MD",
+      "notes": "chad.slifer@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct262",
+      "name": "Up Closets of Reno",
+      "notes": "pcriss@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct263",
+      "name": "Custom Closets by Beverly",
+      "notes": "info@customclosetsbybeverly.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct264",
+      "name": "Up Closets of New York City",
+      "notes": "nyc@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct265",
+      "name": "South Bay Custom Closets",
+      "notes": "lillian@email.southbaycustomclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct266",
+      "name": "Closet Gallery",
+      "notes": "info@closet-gallery.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct267",
+      "name": "Pacific Kitchens",
+      "notes": "countertops@tacomagranite.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct268",
+      "name": "Up Closets of Greater Charlotte",
+      "notes": "greatercharlotte@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-05",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct269",
+      "name": "The Tailored Closet - Birmingham, AL",
+      "notes": "dellison@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct270",
+      "name": "The Tailored Closet - Rapid City, SD",
+      "notes": "sschaeffer@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct271",
+      "name": "Up Closets of Charleston",
+      "notes": "charleston@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct272",
+      "name": "The Tailored Closet - Meridian, ID",
+      "notes": "cindy.warmerdam@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct273",
+      "name": "The Tailored Closet - Florence, KY",
+      "notes": "infomp@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Cincinnati, OH)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct274",
+      "name": "The Tailored Closet - Erie, CO",
+      "notes": "dalvarado@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct275",
+      "name": "The Tailored Closet - Wixom, MI (Canton, MI)",
+      "notes": "jgessler@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Wixom, MI (Grand Rapids, MI))",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct276",
+      "name": "The Tailored Closet - Temecula, CA 92592",
+      "notes": "sheryl.greenlee@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct277",
+      "name": "The Tailored Closet - Austin, TX",
+      "notes": "central.austin@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct278",
+      "name": "The Tailored Closet - Orlando, FL",
+      "notes": "sean.chung@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct279",
+      "name": "Up Closets of Chattanooga",
+      "notes": "chattanooga@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct280",
+      "name": "Up Closets of Knoxville",
+      "notes": "knoxville@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct281",
+      "name": "The Tailored Closet - Central PA",
+      "notes": "dwheeland@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct282",
+      "name": "The Tailored Closet - North Charleston, SC",
+      "notes": "debbie.cannatella@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct283",
+      "name": "Up Closets of Nashville",
+      "notes": "angie@upclosets.com - AI closet designer outreach sent (also pitched for: Up Closets of Rutherford County, Up Closets of Wilson County)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct284",
+      "name": "The Tailored Closet - Charlotte, NC",
+      "notes": "efogelberg@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct285",
+      "name": "Up Closets of Austin",
+      "notes": "austin@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct286",
+      "name": "The Tailored Closet - Cleveland, OH",
+      "notes": "mbowser@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct287",
+      "name": "Up Closets of Central Houston",
+      "notes": "bsandberg@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct288",
+      "name": "The Tailored Closet - Chapin, SC",
+      "notes": "rjcarruthers@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct289",
+      "name": "Up Closets of Collin County",
+      "notes": "collincounty@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct290",
+      "name": "The Tailored Closet - Corpus Christi, TX",
+      "notes": "trina.allen@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct291",
+      "name": "Up Closets of Denton County",
+      "notes": "cstern@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct292",
+      "name": "The Tailored Closet - Danbury, CT",
+      "notes": "danbury@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct293",
+      "name": "Up Closets of Fort Worth",
+      "notes": "darrik@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct294",
+      "name": "The Tailored Closet - Grimes, IA",
+      "notes": "jhalfpap@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct295",
+      "name": "Up Closets of San Antonio",
+      "notes": "smunoz@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct296",
+      "name": "The Tailored Closet - Fort Walton Beach, FL",
+      "notes": "jeni.cleveland@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct297",
+      "name": "Up Closets of Spring",
+      "notes": "cnguyen@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct298",
+      "name": "The Tailored Closet - Riverside, CA (Diamond Bar, CA)",
+      "notes": "jchang@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Riverside, CA)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct299",
+      "name": "Up Closets of Salt Lake City North",
+      "notes": "rchandler@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct300",
+      "name": "Up Closets of Loudoun & Fairfax County",
+      "notes": "lbotla@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-02",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct301",
+      "name": "Up Closets of Richmond",
+      "notes": "richmond@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct302",
+      "name": "The Tailored Closet - Jacksonville, FL",
+      "notes": "tblin@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Saint Augustine, FL)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct303",
+      "name": "The Tailored Closet - Fargo, ND",
+      "notes": "dgalt@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct304",
+      "name": "Up Closets of Madison",
+      "notes": "rjackson@upclosets.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct305",
+      "name": "The Tailored Closet - Fort Lauderdale, FL",
+      "notes": "southflorida@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Fort Lauderdale, FL (Miami, FL), The Tailored Closet - West Palm Beach, FL)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct306",
+      "name": "The Tailored Closet - Oshkosh, WI",
+      "notes": "sdoberstein@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct307",
+      "name": "The Tailored Closet - Foxborough, MA",
+      "notes": "jason.greenberg@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct308",
+      "name": "The Tailored Closet - Chantilly, VA",
+      "notes": "greaterdc@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct309",
+      "name": "The Tailored Closet - Dundas, ON",
+      "notes": "rwagner@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct310",
+      "name": "The Tailored Closet - Indianapolis, IN",
+      "notes": "sgonzalezpiriz@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct311",
+      "name": "The Tailored Closet - Lake Forest, CA (Irvine, CA)",
+      "notes": "irvine@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct312",
+      "name": "The Tailored Closet - Pennington, NJ",
+      "notes": "tkerekes@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct313",
+      "name": "The Tailored Closet - Knoxville, TN",
+      "notes": "knoxville@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct314",
+      "name": "The Tailored Closet - Madison, WI",
+      "notes": "madison@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct315",
+      "name": "The Tailored Closet - Rockland, ME",
+      "notes": "marci.lambert@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct316",
+      "name": "The Tailored Closet - Dieppe, NB",
+      "notes": "victor.cormier@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct317",
+      "name": "The Tailored Closet - Naples, FL",
+      "notes": "naples@tailoredcloset.com - BOUNCED on AI closet designer outreach",
+      "stage": "prospect",
+      "reachedOutDate": null,
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct318",
+      "name": "The Tailored Closet - Nashville, TN",
+      "notes": "nashoffice@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct319",
+      "name": "The Tailored Closet - Niantic, CT",
+      "notes": "tlniantic-ct@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct320",
+      "name": "The Tailored Closet - Springdale, AR",
+      "notes": "tlnwa@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct321",
+      "name": "The Tailored Closet - San Antonio, TX",
+      "notes": "dholmes@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct322",
+      "name": "The Tailored Closet - San Marcos, CA 92069",
+      "notes": "infosandiego@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - San Marcos, CA)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct323",
+      "name": "The Tailored Closet - North Tampa, FL",
+      "notes": "northtampaadmin@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Apollo Beach, FL)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct324",
+      "name": "The Tailored Closet - Hackensack, NJ",
+      "notes": "jfeingold@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - White Plains, NY)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct325",
+      "name": "The Tailored Closet - Northern Westchester, NY",
+      "notes": "northernwestchester@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct326",
+      "name": "The Tailored Closet - Northwest Houston, TX",
+      "notes": "nwhouston@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct327",
+      "name": "The Tailored Closet - Oakville, ON",
+      "notes": "rob.wagner@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct328",
+      "name": "The Tailored Closet - Penticton, BC",
+      "notes": "lnield@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct329",
+      "name": "The Tailored Closet - Parker, CO",
+      "notes": "tr.mcdowell@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct330",
+      "name": "The Tailored Closet - Punta Gorda, FL",
+      "notes": "josh.stevens@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct331",
+      "name": "The Tailored Closet - Saco, ME",
+      "notes": "southernmaine@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct332",
+      "name": "The Tailored Closet - Apex, NC",
+      "notes": "raleigh@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct333",
+      "name": "The Tailored Closet - Newmarket, ON",
+      "notes": "blimo@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct334",
+      "name": "The Tailored Closet - Runnemede, NJ",
+      "notes": "irfan.ullah@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct335",
+      "name": "The Tailored Closet - Atascadero, CA",
+      "notes": "slocounty@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct336",
+      "name": "The Tailored Closet - San Mateo, CA",
+      "notes": "bayarea@tailoredcloset.com - AI closet designer outreach sent (also pitched for: The Tailored Closet - Foster City, CA)",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct337",
+      "name": "The Tailored Closet - Castaic, CA",
+      "notes": "cary.llewelyn@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct338",
+      "name": "The Tailored Closet - Sarasota, FL",
+      "notes": "sjacoby@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct339",
+      "name": "The Tailored Closet - Scottsdale, AZ",
+      "notes": "kkinney@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct340",
+      "name": "The Tailored Closet - Columbia, MD",
+      "notes": "sam.epiceno@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct341",
+      "name": "The Tailored Closet - Hillsborough, NJ",
+      "notes": "tcolumbia@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct342",
+      "name": "The Tailored Closet - Heyburn, ID",
+      "notes": "mlee@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct343",
+      "name": "The Tailored Closet - St. George, UT",
+      "notes": "aaron.tuttle@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct344",
+      "name": "The Tailored Closet - Oxnard, CA",
+      "notes": "bob.parizo@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct345",
+      "name": "The Tailored Closet - Traverse City, MI",
+      "notes": "bzimmerman@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct346",
+      "name": "The Tailored Closet - Johnson City, TN",
+      "notes": "william.leonard@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct347",
+      "name": "The Tailored Closet - Orem, UT",
+      "notes": "jensen.paterson@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct348",
+      "name": "The Tailored Closet - Vernon, BC",
+      "notes": "nathan.monk@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct349",
+      "name": "The Tailored Closet - Warrenton, VA",
+      "notes": "cwinfo@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct350",
+      "name": "The Tailored Closet - Waukesha, WI",
+      "notes": "milwaukee@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct351",
+      "name": "The Tailored Closet - Stittsville, ON",
+      "notes": "jrexantus@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
+      "notifiedAt": null
+    },
+    {
+      "id": "oct352",
+      "name": "The Tailored Closet - Andover, KS",
+      "notes": "kevin.hinshaw@tailoredcloset.com - AI closet designer outreach sent, follow-up drafted Oct 15",
+      "stage": "reached_out",
+      "reachedOutDate": "2026-10-01",
+      "updatedAt": 1791993600000,
       "notifiedAt": null
     }
   ],
