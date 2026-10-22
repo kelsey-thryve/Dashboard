@@ -24,6 +24,11 @@ Read `~/Projects/Dashboard/data.json` for business/client context if the ask is 
 - Staying on-brand: ask for or reuse existing brand colors/fonts/logo rather than inventing a new look each time, unless Kelsey explicitly wants something different.
 - For anything that isn't a Canva-native design (e.g. a quick mockup, a static HTML graphic), the `design` skill is the right tool — load it before building a canvas.
 
+## Ad creative rules
+
+- Story/Reels ads are 1080x1920, but all key information (headline, offer, price, CTA, logo) must sit inside the middle 1350px (y 285 to 1635). Only background photo can run outside it.
+- Before designing new ad creative, pull the best performing ads from the client's Meta ad account and build on their messaging and layouts.
+
 ## Before publishing
 
 Draft/generate and show Kelsey the result first. Only publish, export publicly, or hand a design off as final after she approves it in this conversation.
