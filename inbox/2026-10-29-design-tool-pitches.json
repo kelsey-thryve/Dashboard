@@ -1,0 +1,18 @@
+{
+  "source": "Design tool pitches: Bunnings, Freedom, Harvey Norman, nood",
+  "client": "Sales",
+  "tasks": [
+    "Find email addresses for the design tool contacts (Bunnings, Freedom, Harvey Norman, nood)",
+    "Confirm design tool contact titles on LinkedIn before sending",
+    "Print and drop the design tool booklets at each head office",
+    "Send design tool pitch emails, wave 1 (NZ leads and marketing)",
+    "Send design tool pitch emails, wave 2 (group and senior contacts)",
+    "Decide the exclusivity line for competing retailers before the first demo"
+  ],
+  "prospects": [
+    {"name": "Bunnings NZ (Outdoor Design Studio)", "stage": "prospect", "note": "Outdoor design tool pitch, same package as Mitre 10. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."},
+    {"name": "Freedom Furniture NZ (Design Studio)", "stage": "prospect", "note": "Room design tool pitch. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."},
+    {"name": "Harvey Norman NZ (Room Designer)", "stage": "prospect", "note": "Room design tool pitch. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."},
+    {"name": "nood (Room Styler)", "stage": "prospect", "note": "Room design tool pitch. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."}
+  ]
+}
