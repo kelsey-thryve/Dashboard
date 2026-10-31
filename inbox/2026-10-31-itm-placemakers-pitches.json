@@ -1,0 +1,14 @@
+{
+  "source": "Design tool pitches: PlaceMakers and ITM",
+  "client": "Sales",
+  "tasks": [
+    "Find email addresses for the PlaceMakers and ITM contacts",
+    "Print and drop the PlaceMakers and ITM booklets at their head offices",
+    "Send PlaceMakers and ITM pitch emails (NZ leads and marketing first)",
+    "Ask PlaceMakers and ITM for a product feed if they want a pilot"
+  ],
+  "prospects": [
+    {"name": "PlaceMakers (Landscape Designer)", "stage": "prospect", "note": "Outdoor design tool pitch, same package as Mitre 10. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."},
+    {"name": "ITM (Outdoor Project Planner)", "stage": "prospect", "note": "Outdoor project planner pitch: plans go to the local store as quote requests. Contacts and draft emails in the private outreach doc in Drive (Landscape pitch)."}
+  ]
+}
